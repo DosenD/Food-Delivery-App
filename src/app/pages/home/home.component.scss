@@ -1,0 +1,33 @@
+.wrapper-home {
+  
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../../assets/images/sl8_burger1BandWpale.png);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  .inner-home {
+   margin-top: 20vh;
+   
+    .hero {
+     margin: 0 10px;
+     
+      .heroImg {
+        max-width: 950px;
+        min-width: 320px;
+        width: 100%;
+      }
+    }
+
+    div.order {
+      margin-top: 150px;
+      a.orderLink {
+        button.orderButt {
+          padding: 2px 15px;
+          font-size: 20px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}

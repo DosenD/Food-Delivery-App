@@ -1,0 +1,31 @@
+.wrapper-shop-cart {
+  margin: 0 auto;
+  .inner-shop-cart {
+    margin-top: 100px;
+    padding: 10px;
+    .title {
+      h1 {
+       margin-bottom: 60px;
+       color: var(--text);
+      }
+    }
+    .shop-cart-container {
+      width: 100%;
+    }
+    .priceSum {
+      padding-top: 25px;
+      border-top: 1px dashed var(--text);
+      p {
+        font-size: 22px;
+        margin-bottom: 0px;
+      }
+    }
+    .forw-back {
+      margin-top: 50px;
+      .back {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+

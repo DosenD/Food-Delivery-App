@@ -1,0 +1,20 @@
+<div class="shop-cart-item" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+ <div class="image-cont" fxLayout="row" fxLayoutAlign="start center">
+  <img class="image" src="{{item.product.imagePath}}" alt="">
+ </div>
+ <div class="desc" fxLayout="column" fxLayoutAlign="center start">
+  <p>{{ item.product.name }}</p>
+  <p>Kom: {{ item.quantity }}</p>
+  <p>Namazi: {{ item.toppings }}</p>
+  <p>Salate: {{ item.salads }}</p>
+ </div>
+ <div class="priceAndRemove" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="price">
+   <p>cena: {{ item.sum || item.product.price * item.quantity}} din.</p>
+  </div>
+  <div class="remove">
+   <button mat-raised-button color="warn" type="button" (click)="onDeleteItem(index)">ukloni
+   </button>
+  </div>
+ </div>
+</div>

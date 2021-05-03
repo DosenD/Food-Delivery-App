@@ -1,0 +1,12 @@
+<div class="wrapper wrapper-products">
+ <div class="inner inner-products">
+  <div class="title-products" fxLayout="row" fxLayoutAlign="center center">
+   <h1>Specijaliteti od svinjskog mesa</h1>
+  </div>
+   <div class="productItems-container" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div *ngFor="let item of productItems">
+     <app-product-item [item]="item" [ngClass]="{'pork-item': item.type === 'pork'}"></app-product-item>
+    </div>
+   </div>
+ </div>
+</div>

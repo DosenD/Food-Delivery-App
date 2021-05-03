@@ -1,0 +1,33 @@
+.wrapper-products {
+  background-image: url(../../assets/images/sl8_burger3.png);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  .inner-products {
+    margin-top: 120px;
+    .title-products {
+      margin-bottom: 60px;
+      
+      h1 {
+        color: var(--white);
+        margin-bottom: 10px;
+        text-align: center;
+        border-bottom: 2px dotted var(--orange);
+        background: rgba(8, 8, 8, 0.082);
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper-products {
+    .inner-products {
+      .title-products {
+        h1 {
+          font-size: 22px !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<div class="wrapper wrapper-checkOut">
+ <div class="inner inner-checkOut">
+  <div class="titleOrder" fxLayout="row" fxLayoutAlign="center center">
+   <h3>Vaša narudžbina</h3>
+  </div>
+  <div class="orderInfo" *ngFor="let cartItem of cartItems" fxLayout="row" fxLayoutAlign="space-between">
+   <div class="itemName">
+    <p>{{cartItem.product.name}}</p>
+   </div>
+   <div class="itemAmount">
+    <p>Kom: {{ cartItem.quantity }}</p>
+   </div>
+   <div class="itemPrice">
+    <p>cena: {{ cartItem.quantity * cartItem.product.price}} din.</p>
+   </div>
+  </div>
+  <div class="sum" fxLayout="row" fxLayoutAlign="end center">
+   <p>Ukupno: {{sum}} din.</p>
+  </div>
+  
+  <div class="userInfo">
+   <div class="titleInfo" fxLayout="row" fxLayoutAlign="center center">
+    <h3>Vaši podaci</h3>
+   </div>
+   <form (submit)="addOrder()" [formGroup]="form">
+    <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
+     <div class="firstName">
+      <input 
+       placeholder="Ime"
+       type="text" 
+       formControlName="firstName"
+       class="fName">
+     </div>
+     <div  class="lastName">
+      <input
+       placeholder="Prezime"
+       formControlName="lastName"
+       type="text"
+       class="lName">
+     </div>
+    </div>
+    <div class="adress" fxLayout="row" fxLayoutAlign="space-between center">
+     <div class="streetName">
+      <input 
+       placeholder="Ime ulice"
+       formControlName="streetName"
+       type="text"
+       class="strName">
+     </div>
+     <div class="houseOrBuildNum">
+      <input 
+       placeholder="Broj zgrade/kuće"
+       formControlName="houseOrBuildingNum"
+       type="text"
+       class="hObNum">
+     </div>
+    </div>
+    <div class="appartmentNum">
+      <input 
+       placeholder="broj stana"
+       formControlName="appartmentNum"
+       type="number"
+       class="appNum">
+    </div>
+    
+    
+
+   </form>
+  </div>
+  
+
+ </div>
+</div>

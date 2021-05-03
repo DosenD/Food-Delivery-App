@@ -1,0 +1,83 @@
+
+ <div class="wrapper wrapper-header">
+  <div class="inner inner-header">
+   <nav mat-tab-nav-bar>
+    <div class="inner-nav" fxLayout="row" fxLayoutAlign="space-between center">
+     <div class="logo">
+      <div class="inner-logo">
+       <a mat-tab-link routerLink="/">
+        <img src="../../assets/images/PngItem_694730.png">
+       </a>
+      </div>
+     </div>
+     <div class="title" fxLayoutAlign="center center">
+      <h2>Food hunter</h2>
+     </div>
+     <div class="bar" fxLayout="row" fxLayoutAlign="center center">
+      <a mat-tab-link routerLink="/shopCart" class="cartIcon" style="min-width: 60px; padding: 0;">
+       <button mat-raised-button style="width: 100%;">
+        <mat-icon class="shopCart">shopping_cart</mat-icon><span *ngIf="showItemNum" style="height: 15px;color: var(--white);">{{itemNumber}}</span>
+       </button>
+      </a>
+      <div (click)="toggleIsOpen()" class="menuBurger" fxLayout="row" fxLayoutAlign="center center">
+       <a href="" class="hamburger" (click)="isActive($event)" [className]=" burgerActive? 'is-active' : 'hamburger'"
+        fxLayout="column" fxLayoutAlign="center center">
+        <span></span>
+        <span></span>
+        <span></span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </nav>
+  </div>
+ </div>
+ <div class="wrapper-sidenav">
+  <div class="inner inner-sidenav">
+   <div class="nav-closed" [className]="isOpen ? 'nav-opened': 'nav-closed'">
+      <mat-list>
+       <mat-list-item>
+        <button id="closeNavBut" (click)="closeSideNav()">
+         <mat-icon class="closeNavIcon">clear</mat-icon>
+        </button>
+       </mat-list-item>
+       <mat-list-item>
+        <mat-icon>account_circle</mat-icon>
+        <h3>Log in/Sign up</h3>
+        <mat-icon class="arrowDown">arrow_drop_down</mat-icon>
+       </mat-list-item>
+       <mat-divider class="side-menu-div"></mat-divider>
+       <mat-list-item>
+        <div class="sideNav-item" (click)="fillerToggle($event)" fxLayout="row">
+         <mat-icon>library_books</mat-icon>
+         <h3>Meni</h3>
+         <mat-icon class="arrowDown">arrow_drop_down</mat-icon>
+        </div>
+       </mat-list-item>
+       <mat-divider class="side-menu-div" *ngIf="showFiller"></mat-divider>
+       <div class="menu-container" *ngIf="showFiller">
+        <mat-list-item>
+         <a routerLink="/pork">Svinjsko meso</a>
+        </mat-list-item>
+        <mat-list-item>
+         <a routerLink="/chicken">Piletina</a>
+        </mat-list-item>
+        <mat-list-item>
+         <a routerLink="/sandwiches">Sendvici</a>
+        </mat-list-item>
+       </div>
+       <mat-divider class="side-menu-div"></mat-divider>
+
+       <mat-list-item>
+        <mat-icon>store</mat-icon>
+        <a routerLink="/about">O nama</a>
+       </mat-list-item>
+       <mat-divider class="side-menu-div"></mat-divider>
+       <mat-list-item>
+        <mat-icon> local_phone</mat-icon>
+        <a routerLink="/contact">Kontakt</a>
+       </mat-list-item>
+      </mat-list>
+   </div>
+  </div>
+ </div>

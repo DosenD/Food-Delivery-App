@@ -1,0 +1,29 @@
+<div class="wrapper wrapper-shop-cart">
+ <div class="inner inner-shop-cart" fxLayout="column" fxLayoutAlign="center">
+  <div class="title-shop-cart" fxLayout="row" fxLayoutAlign="center center">
+   <h1>Vaša Porudžbina</h1>
+  </div>
+  <div class="shop-cart-container" fxLayout="column" fxLayoutAlign="space-between">
+   <app-cart-item 
+    *ngFor="let item of cartItems; 
+    let i = index;" 
+    [item]="item" 
+    [index]="i"
+    (updatePrice)="onChangeSum(index)">
+   </app-cart-item>
+  </div>
+  <div class="priceSum" fxLayout="row" fxLayoutAlign="end center">
+   <p>Ukupno: {{sum}} din.</p>
+  </div>
+  <div class="forw-back" fxLayout="row" fxLayoutAlign="space-between center">
+   <div class="back">
+    <button mat-raised-button class="default" type="button" (click)="goBack()">Nastavi kupovinu
+    </button>
+   </div>
+   <div class="forward">
+    <button mat-raised-button class="default" type="button" (click)="goForward()">Završi kupovinu
+    </button>
+   </div>
+  </div>
+ </div>
+</div>
