@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/shared/menu-item.model';
 import { CartService } from '../../services/cart.service';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -22,7 +23,11 @@ export class ShopCartComponent implements OnInit, OnDestroy {
 
   quantityArr:[] = []
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+   private cartService: CartService,
+   private router: Router,
+   private browserStorageService: BrowserStorageService,
+  ) {}
 
   calcSum() {
     //def calcSum so we can use it in multiple places,tried putting it in cart.service but something's not working
@@ -35,33 +40,34 @@ export class ShopCartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cartItemsSub = this.cartService.items.subscribe( result => {
-      if (result.length && sessionStorage.getItem('data') !== null) {
-       this.localData = JSON.parse(sessionStorage.getItem('data')!);
-       this.resultData = result;
-       this.cartItems = [...this.localData, ...this.resultData];
-       this.calcSum();
-      }else if (result.length){
-       this.cartItems = result;
-       this.calcSum();
-      } else if (!result.length) {
+     if(result.length){
+      this.cartItems = result;
+      this.calcSum()
+     } else if (!result.length) {
+      result = JSON.parse(sessionStorage.getItem('key')!);
+      //result = this.cartService.fillItemsSubject();
+      this.cartItems = result
+      this.calcSum();
+     
+     }
+      
+     
+      /* else if (!result.length) {
        this.cartItems = JSON.parse(sessionStorage.getItem('data')!);
-       this.calcSum();
-      } else if (!this.cartItems.length) {  //if cartItems has no lenght set sum to zero, otherwise it's nothing
+       this.calcSum();}
+       */if (!this.cartItems.length) {  //if cartItems has no lenght set sum to zero, otherwise it's nothing
         this.sum = 0;
       }
      
     });
-
-    sessionStorage.setItem('data', JSON.stringify(this.cartItems));
+   // this.cartService.updateItems()
+    sessionStorage.setItem('key', JSON.stringify(this.cartItems));
   }
   
   onChangeSum(index: number) {
-   this.cartItems.splice(index, 1);
-   //this.cartService.updateItems()
-   this.cartItems = this.cartItems
-   console.log('Something happend')
+   this.cartService.deleteItems(index)
    this.calcSum();
-   sessionStorage.setItem('data', JSON.stringify(this.cartItems));
+   sessionStorage.setItem('key', JSON.stringify(this.cartItems));
  }
  
   goBack() {

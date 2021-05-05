@@ -15,26 +15,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cartItems: CartItem[] = [];
   itemNumber: number = 0;
   showItemNum: boolean = false;
+  
 
   getItemNumber() {
     this.itemNumber = 0;
-    this.cartItems.forEach((item) => {
-      this.itemNumber += item.quantity;
-      return this.itemNumber;
-    });
+    if (!this.cartItems) {
+      return;
+    } else {
+      this.cartItems.forEach((item) => {
+        this.itemNumber += item.quantity;
+        return this.itemNumber;
+      });
+    }
   }
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
     this.itmNumberSub = this.cartService.items.subscribe((result) => {
-      if (result.length) {
+      if (!result) {
+        this.cartItems = JSON.parse(sessionStorage.getItem('key')!);
+        this.getItemNumber();
+      } else if (result) {
         this.cartItems = result;
         this.getItemNumber();
-      } else if (!result.length) {
-        this.cartItems = JSON.parse(sessionStorage.getItem('data')!);
-        this.getItemNumber()
-      } 
+      }
+
       if (this.itemNumber === 0) {
         this.showItemNum = false;
       } else {
@@ -42,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
   burgerActive = false;
   isActive(event: Event) {
     event.preventDefault();
@@ -60,10 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.burgerActive = false;
   }
 
-  ngOnDestroy(){
-   this.itmNumberSub.unsubscribe();
+  ngOnDestroy() {
+    this.itmNumberSub.unsubscribe();
   }
-
-
-
 }
