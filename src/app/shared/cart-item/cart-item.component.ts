@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from '../menu-item.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -17,10 +17,11 @@ export class CartItemComponent  {
 
 
   cartItems:CartItem[] = [];
-  
+
   onDeleteItem(index:number){
-  //this.cartService.deleteItems(index);
-   this.updatePrice.emit(index);
+   //this.updatePrice.emit(index);
+   this.cartService.deleteItems(index)
+   console.log(index)
   }
 
 }

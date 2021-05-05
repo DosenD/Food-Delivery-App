@@ -11,35 +11,44 @@ export class CartService {
   public items = this.itemsSubject.asObservable();
   cartItems!:CartItem[];
   sum!:number;
-  key!:string
+  key!:string;
+  
   constructor(private browserStorageService: BrowserStorageService) { }
+  
+  
+
 
   addItems(data: CartItem){
-    this.itemsSubject.next([...this.itemsSubject.value, ...[data]]);
+   const storeData =  [...this.itemsSubject.value, ...[data]];
+   const updateData = this.browserStorageService.getSession('cartItem')
+   if(updateData){
+    updateData.push(data)
+    this.browserStorageService.setSessionData(updateData)
+    this.itemsSubject.next(updateData);
+   }else {
+    this.browserStorageService.setSessionData(storeData)
+    this.itemsSubject.next(storeData); 
+   }
   }
-
-  fillItemsSubject():any{
   
-    this.itemsSubject.value === JSON.parse(sessionStorage.getItem('key')!);
-   // this.itemsSubject.next(this.itemsSubject.value)
-    return this.itemsSubject.value
-
-   
+  
+  checkSessionData(){
+   const getStoredData = this.browserStorageService.getSession('cartItem')
+   if(getStoredData){
+    this.itemsSubject.next(getStoredData);
+   }
   }
 
-  updateItems(){
-   this.itemsSubject.next(this.cartItems)
-  }
   
   deleteItems(index:number){
-   this.itemsSubject.value.splice(index, 1);
-   this.itemsSubject.next(this.itemsSubject.value)
+   const updateData = this.browserStorageService.getSession('cartItem')
+   updateData.splice(index, 1);
+   this.browserStorageService.setSessionData(updateData);
+   this.itemsSubject.next(updateData);
   }
 
 
   resetItems() {
    this.itemsSubject.next([]);
   }
-
-
 }

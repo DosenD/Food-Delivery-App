@@ -9,13 +9,13 @@ import { CartItem } from '../shared/menu-item.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  showFiller = false;
-  isOpen = false;
+  showFiller: boolean = false;
+  isOpen: boolean = false;
   private itmNumberSub!: Subscription;
   cartItems: CartItem[] = [];
   itemNumber: number = 0;
   showItemNum: boolean = false;
-  
+  burgerActive: boolean = false;
 
   getItemNumber() {
     this.itemNumber = 0;
@@ -32,15 +32,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.itmNumberSub = this.cartService.items.subscribe((result) => {
-      if (!result) {
-        this.cartItems = JSON.parse(sessionStorage.getItem('key')!);
-        this.getItemNumber();
-      } else if (result) {
-        this.cartItems = result;
-        this.getItemNumber();
-      }
-
+    this.cartService.checkSessionData();
+    this.itmNumberSub = this.cartService.items.subscribe(result => {
+      this.cartItems = result;
+      this.getItemNumber()
       if (this.itemNumber === 0) {
         this.showItemNum = false;
       } else {
@@ -49,7 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  burgerActive = false;
+  
   isActive(event: Event) {
     event.preventDefault();
     this.burgerActive = !this.burgerActive;

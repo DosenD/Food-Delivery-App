@@ -20,8 +20,8 @@ export class ShopCartComponent implements OnInit, OnDestroy {
   cartItems: CartItem[] = [];
   localData: CartItem[] = [];
   resultData: CartItem[] = [];
-
-  quantityArr:[] = []
+  quantityArr: [] = [];
+  
 
   constructor(
    private cartService: CartService,
@@ -30,44 +30,25 @@ export class ShopCartComponent implements OnInit, OnDestroy {
   ) {}
 
   calcSum() {
-    //def calcSum so we can use it in multiple places,tried putting it in cart.service but something's not working
-    this.sum = 0; //must reset sum to zero before looping through cartItems
+    this.sum = 0;                 //must reset sum to zero before looping through cartItems
     this.cartItems.forEach((item) => {
       this.sum += item.product.price * item.quantity;
       return this.sum;
     });
   }
-
+  
   ngOnInit() {
+    this.cartService.checkSessionData()
     this.cartItemsSub = this.cartService.items.subscribe( result => {
-     if(result.length){
-      this.cartItems = result;
-      this.calcSum()
-     } else if (!result.length) {
-      result = JSON.parse(sessionStorage.getItem('key')!);
-      //result = this.cartService.fillItemsSubject();
-      this.cartItems = result
+     this.cartItems = result
       this.calcSum();
-     
-     }
-      
-     
-      /* else if (!result.length) {
-       this.cartItems = JSON.parse(sessionStorage.getItem('data')!);
-       this.calcSum();}
-       */if (!this.cartItems.length) {  //if cartItems has no lenght set sum to zero, otherwise it's nothing
-        this.sum = 0;
-      }
-     
     });
-   // this.cartService.updateItems()
-    sessionStorage.setItem('key', JSON.stringify(this.cartItems));
   }
   
   onChangeSum(index: number) {
    this.cartService.deleteItems(index)
    this.calcSum();
-   sessionStorage.setItem('key', JSON.stringify(this.cartItems));
+   this.browserStorageService.setSessionData(this.cartItems);
  }
  
   goBack() {
