@@ -12,17 +12,20 @@ export class MenuComponent implements OnInit {
   {
    name: 'Proizvodi od svinjskog mesa',
    imagePath: '../../../assets/images/pork-products.jpg',
-   description: 'Proizvodi od svinjskog mesa obuhvataju široku ponudu specijaliteta pravljenih od najkvalitetnijih sirovina'
+   description: 'Proizvodi od svinjskog mesa obuhvataju široku ponudu specijaliteta pravljenih od najkvalitetnijih sirovina',
+   linkToGroup: '/pork'
   } as ProductGroup,
   {
    name: 'Proizvodi od pilećeg mesa',
    imagePath: '../../../assets/images/chicken-products.jpg',
-   description: 'Proivodi od pilećeg mesa obuhvataju široku ponudu specijaliteta pravljenih od najkvalitetnijih sirovina'
+   description: 'Proivodi od pilećeg mesa obuhvataju široku ponudu specijaliteta pravljenih od najkvalitetnijih sirovina',
+   linkToGroup: '/chicken'
   } as ProductGroup,
   {
    name: 'Sendviči',
    imagePath: '../../../assets/images/sandwiches.jpg',
-   description: 'Pogledajte nasu siroku ponudu senviča'
+   description: 'Pogledajte nasu siroku ponudu senviča',
+   linkToGroup: '/sandwiches'
   } as ProductGroup,
  ]
 

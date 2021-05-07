@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private cartservice: CartService) { }
 
-  loadPork(){
+  loadMenu(){
    this.router.navigate(['/menu'])
 
   }

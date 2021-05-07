@@ -1,0 +1,25 @@
+.inner-product-group {
+ .product-group {
+  mat-card.product-group {
+   max-width: 300px !important;
+
+   image.groupImage {
+    margin: 10px 0px;
+    max-width: 300px;
+    height: auto;
+   } 
+   mat-card-content {
+    p.description {
+     max-width: 280px!important;
+     height: 40px;
+     width: 100%;
+    }
+   }
+   button.linkToGroupB{
+    a {
+     color: white;
+    }
+   }
+  }
+ }
+}
