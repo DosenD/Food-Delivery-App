@@ -2,6 +2,7 @@ export interface ProductGroup {
  name:string,
  imagePath:string,
  description: string,
+ linkToGroup: string,
 }
 
 

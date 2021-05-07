@@ -8,10 +8,10 @@ import { ProductGroup } from '../../shared/product-cart-item.model';
 })
 export class ProductGroupComponent implements OnInit {
  @Input() item!: ProductGroup;
-
+  productGroups!: ProductGroup[];
   constructor() { }
 
   ngOnInit(): void {
   }
-
+ 
 }
