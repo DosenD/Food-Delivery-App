@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private cartservice: CartService) { }
 
   loadPork(){
-   this.router.navigate(['/pork'])
+   this.router.navigate(['/menu'])
 
   }
 
