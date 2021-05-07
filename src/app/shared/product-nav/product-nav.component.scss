@@ -1,0 +1,14 @@
+.prodNav {
+ position: fixed;
+ bottom: 0px;
+ left: 50%;
+ transform: translate(-50%, 0);
+ z-index: 1;
+ width: 100%;
+ padding: 7px;
+ background-color: rgba(255, 255, 255, 0.733);
+
+ .backToMenu {
+  margin-right: 10px;
+ }
+}

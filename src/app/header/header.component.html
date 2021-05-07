@@ -6,17 +6,15 @@
      <div class="logo">
       <div class="inner-logo">
        <a mat-tab-link routerLink="/">
-        <img src="../../assets/images/PngItem_694730.png">
+        <img src="../../assets/images/PngItem_6947301.png">
        </a>
       </div>
      </div>
-     <div class="title" fxLayoutAlign="center center">
-      <h2>Food hunter</h2>
-     </div>
+    
      <div class="bar" fxLayout="row" fxLayoutAlign="center center">
       <a mat-tab-link routerLink="/shopCart" class="cartIcon" style="min-width: 60px; padding: 0;">
        <button mat-raised-button style="width: 100%;">
-        <mat-icon class="shopCart">shopping_cart</mat-icon><span *ngIf="showItemNum" style="height: 15px;color: var(--white);">{{itemNumber}}</span>
+        <mat-icon class="shopCart">shopping_cart</mat-icon><span *ngIf="showItemNum" style="height: 15px;color: var(--white);background-color: #b30303;">{{itemNumber}}</span>
        </button>
       </a>
       <div (click)="toggleIsOpen()" class="menuBurger" fxLayout="row" fxLayoutAlign="center center">

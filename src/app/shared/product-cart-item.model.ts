@@ -1,3 +1,10 @@
+export interface ProductGroup {
+ name:string,
+ imagePath:string,
+ description: string,
+}
+
+
 export interface Product {
  name: string,
  imagePath:string, 

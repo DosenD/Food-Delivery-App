@@ -1,12 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
 import { CartService } from 'src/app/services/cart.service';
-import { CartItem, Product } from 'src/app/shared/menu-item.model';
+import { CartItem, Product } from 'src/app/shared/product-cart-item.model';
 
 @Component({
   selector: 'app-product-item',
@@ -14,11 +10,13 @@ import { CartItem, Product } from 'src/app/shared/menu-item.model';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
+ @ViewChild('tooltip') tooltip!: MatTooltip;
   form!: FormGroup;
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   toppingList: string[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
   saladList: string[] = ['kupus', 'zelena salata', 'paradajz', 'bez salate'];
   cartItems: CartItem[] = [];
+  isTooltipDisabled:boolean = true;
  
   @Input() item!: Product;
   
@@ -32,6 +30,8 @@ export class ProductItemComponent implements OnInit {
       salads: new FormControl(null, Validators.required),
     });
   }
+  
+  //[matTooltipDisabled]="isTooltipDisabled ? true : false"  matTooltip="Tooltip!"
 
   get quantityControl() {
     return this.form.get('quantity');
@@ -43,6 +43,13 @@ export class ProductItemComponent implements OnInit {
     return this.form.get('salads');
   }
 
+  showAndHideTooltip(){
+   this.tooltip.show()
+   setTimeout(()=>{
+    this.tooltip.hide()
+   }, 2000)
+  }
+
   addToCart() {
     const item = new CartItem(
      this.item,
@@ -51,7 +58,6 @@ export class ProductItemComponent implements OnInit {
      this.saladChoice?.value,
     );
     this.cartService.addItems(item);
-    
   }
 }
 

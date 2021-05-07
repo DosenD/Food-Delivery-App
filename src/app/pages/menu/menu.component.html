@@ -1,13 +1,12 @@
 <div class="wrapper wrapper-products">
  <div class="inner inner-products">
   <div class="title-products" fxLayout="row" fxLayoutAlign="center center">
-   <h1>Specijaliteti od svinjskog mesa</h1>
+   <h1>Pogledajte našu ponudu</h1>
   </div>
    <div class="productItems-container" fxLayout="row wrap" fxLayoutAlign="center center">
-    <div *ngFor="let item of productItems">
-     <app-product-item [item]="item" [ngClass]="{'pork-item': item.type === 'pork'}"></app-product-item>
+    <div *ngFor="let item of productGroups">
+     <app-product-group  [item]="item"></app-product-group>
     </div>
    </div>
-   <app-product-nav></app-product-nav>
  </div>
 </div>

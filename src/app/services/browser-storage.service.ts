@@ -18,7 +18,6 @@ export class BrowserStorageService {
   window.sessionStorage.setItem('cartItem', JSON.stringify(data))
  }
 
-
  removeSession(key: string): void{
   window.sessionStorage.removeItem(key)
  }

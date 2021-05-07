@@ -46,7 +46,13 @@
      </div>
      <div class="addToCart" fxLayout="column" fxLayoutAlign="center center">
       <div fxLayout="row" fxLayoutAlign="start start">
-       <button class="default" mat-flat-button type="submit" 
+       <button class="primary" mat-flat-button type="submit"
+        matTooltip="Dodali ste proizvod u korpu!"
+        matTooltipPosition="above"
+        matTooltipClass="tooltip"
+        (mouseenter)="$event.stopImmediatePropagation()" 
+        (mouseleave)="$event.stopImmediatePropagation()" 
+        #tooltip="matTooltip" (click)="showAndHideTooltip()"
         [disabled]="!form.valid">
         Dodaj u Korpu!
        </button>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Product, CartItem } from 'src/app/shared/menu-item.model';
+import { Product, CartItem } from 'src/app/shared/product-cart-item.model';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
