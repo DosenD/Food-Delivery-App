@@ -45,6 +45,8 @@ $materijal-practice-app-theme: mat-light-theme(
 @import "./app/pages/shop-cart/shop-cart.component.scss";
 @import "./app/shared/cart-item/cart-item.component.scss";
 @import "./app/styles/products-shared.scss";
+@import "./app/shared/product-group/product-group.component.scss";
+
 
 html,
 body {
@@ -73,6 +75,7 @@ body {
         box-sizing: border-box;
         a {
           text-decoration: none;
+          color: white;
         }
         p {
           font-size: 15px;
@@ -88,6 +91,7 @@ body {
   mat-icon {
     color: var(--text);
   }
+  
   button.primary {
     background-color: var(--nav-back);
     color: var(--white);
