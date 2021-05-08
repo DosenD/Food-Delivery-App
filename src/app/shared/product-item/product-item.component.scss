@@ -1,73 +1,47 @@
-
-.inner-product-item{
- 
- mat-card.product-item{
-  padding: 20px 10px 10px 10px;
-  margin-bottom: 10px;
-  margin-right: 20px;
-  max-width: 300px !important;
-  height: 607px;
-  min-width: 150px;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  color: var(--text);
-  font-weight: 400;
-  background: var(--inner-back-1);
-  box-shadow: -1px 1px 11px 0px rgba(0,0,0,0.4);
-  -webkit-box-shadow: -1px 1px 11px 0px rgba(0,0,0,0.4);
-  -moz-box-shadow: -1px 1px 11px 0px rgba(0,0,0,0.4);
-
-  mat-card-header {
-   mat-card-title.title {
-    color: var(--text);
-    padding-bottom: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-bottom: 2px dotted var(--orange);
-   }
-  }
-
-  img.itemImage {
-   margin: 10px 0px;
-   max-width: 300px;
-   height: auto;
-  }
-
-  mat-card-content {
-   p.description {
-    max-width: 280px;
-    height: 40px;
-    width: 100%;
-   }
-   .priceAndAddToCart {
-    .price {
-     padding-top: 10px;
-     p {
-      font-size: 18px;
-      margin-bottom: 0px !important;
-     }
-    }
-    .addToCart {
-     .mat-tooltip {
-      font-size: 20px !important;
-     }
-    }
-   }
-
-   mat-form-field {
-    display: block;
-   }
-  }
- }
-}
-
-@media only screen and (max-width: 480px){
- .inner-product-item {
+.inner-product-item {
   mat-card.product-item {
-   margin-right: 0px !important;
+    height: 607px;
+
+    mat-card-header {
+      mat-card-title.title {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+
+    mat-card-content {
+      p.description {
+        max-width: 280px;
+        height: 40px;
+        width: 100%;
+      }
+      .priceAndAddToCart {
+        .price {
+          padding-top: 10px;
+          p {
+            font-size: 18px;
+            margin-bottom: 0px !important;
+          }
+        }
+        .addToCart {
+          .mat-tooltip {
+            font-size: 20px !important;
+          }
+        }
+      }
+
+      mat-form-field {
+        display: block;
+      }
+    }
   }
- }
 }
-//"./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-//"./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+
+@media only screen and (max-width: 480px) {
+  .inner-product-item {
+    mat-card.product-item {
+      margin-right: 0px !important;
+    }
+  }
+}
+

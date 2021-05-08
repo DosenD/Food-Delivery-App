@@ -44,8 +44,12 @@ $materijal-practice-app-theme: mat-light-theme(
 @import "./app/pages/sandwiches/sandwiches.component.scss";
 @import "./app/pages/shop-cart/shop-cart.component.scss";
 @import "./app/shared/cart-item/cart-item.component.scss";
-@import "./app/styles/products-shared.scss";
 @import "./app/shared/product-group/product-group.component.scss";
+@import "./app/styles/products-shared.scss";
+
+
+
+
 
 
 html,
@@ -90,6 +94,27 @@ body {
   }
   mat-icon {
     color: var(--text);
+  }
+  .matCard-style {
+   margin-bottom: 10px;
+   margin-right: 20px;
+   padding: 20px 10px 10px 10px;
+   max-width: 300px;
+   width: 100%;
+   box-sizing: border-box;
+   color: var(--text);
+   font-weight: 400;
+   background: var(--inner-back-1);
+  }
+  .matCard-title-style {
+   color: var(--text);
+   padding-bottom: 10px;
+   border-bottom: 2px dotted var(--nav-back);
+  }
+  .matCard-image {
+   margin: 10px 0px;
+   max-width: 300px;
+   height: auto;
   }
   
   button.primary {

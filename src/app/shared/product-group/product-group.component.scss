@@ -1,25 +1,29 @@
 .inner-product-group {
- .product-group {
   mat-card.product-group {
-   max-width: 300px !important;
+    height: 450px;
 
-   image.groupImage {
-    margin: 10px 0px;
-    max-width: 300px;
-    height: auto;
-   } 
-   mat-card-content {
-    p.description {
-     max-width: 280px!important;
-     height: 40px;
-     width: 100%;
+    .mat-card-header-text {
+      margin: 10px 0px 20px 0px;
     }
-   }
-   button.linkToGroupB{
-    a {
-     color: white;
+
+    mat-card-content {
+      p.groupDescription {
+        max-width: 280px !important;
+        width: 100%;
+      }
     }
-   }
+    .linkToGroup {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
   }
- }
+}
+@media only screen and (max-width: 480px) {
+  .inner-product-group {
+    mat-card.product-group {
+      margin-right: 0px !important;
+    }
+  }
 }

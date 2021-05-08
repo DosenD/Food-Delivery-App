@@ -1,17 +1,17 @@
 <div class="inner inner-product-group" fxLayout="row" fxLayoutAlign="center center">
- <mat-card class="product-group">
+ <mat-card class="product-group matCard-style">
   <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-   <mat-card-title class="title" >{{item.name}}</mat-card-title>
+   <mat-card-title class="matCard-title-style" >{{item.name}}</mat-card-title>
   </mat-card-header>
   <div fxLayout="row" fxLayoutAlign="center center">
-   <img class="groupImage" mat-card-image src="{{item.imagePath}}" alt="" >
+   <img class="matCard-image" mat-card-image src="{{item.imagePath}}" alt="" >
   </div>
   <mat-card-content>
-   <p class="description">{{item.description}}</p>
+   <p class="groupDescription">{{item.description}}</p>
   </mat-card-content>
-  <div fxLayout="row" fxLayoutAlign="center center">
-   <button mat-raised-button class="secondary linkToGroupB">
-    <a routerLink="{{item.linkToGroup}}" class="linkToGroup" >DETALJNIJE</a>
+  <div class="linkToGroup" fxLayout="row" fxLayoutAlign="center center">
+   <button mat-raised-button class="secondary ">
+    <a routerLink="{{item.linkToGroup}}">Poručite</a>
    </button>
   </div>
  </mat-card>
