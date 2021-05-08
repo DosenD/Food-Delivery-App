@@ -58,7 +58,9 @@ export class ProductItemComponent implements OnInit {
      this.saladChoice?.value,
     );
     this.cartService.addItems(item);
-    this.form.reset();
+    setInterval(()=> {
+     this.form.reset()
+    }, 3000)
   }
 }
 
