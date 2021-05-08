@@ -52,7 +52,7 @@ export class ShopCartComponent implements OnInit, OnDestroy {
  }
  
   goBack() {
-    this.router.navigate(['/pork']);
+    this.router.navigate(['/menu']);
   }
 
   goForward() {
