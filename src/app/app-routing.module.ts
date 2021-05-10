@@ -10,7 +10,7 @@ import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 
 
@@ -24,8 +24,8 @@ const appRoutes: Routes = [
  {path: 'contact', component: ContactComponent},
  {path: 'shopCart', component: ShopCartComponent},
  {path: 'checkOut', component: CheckOutComponent},
- {path: 'not-found', component: PageNotFoundComponent},
- {path: '**', redirectTo: '/not-found'}
+ {path: 'error-page', component: ErrorPageComponent, data: {message: 'Error Occurred: Page Not Found!'}},
+ {path: '**', redirectTo: '/error-page'},
  
 ];
 

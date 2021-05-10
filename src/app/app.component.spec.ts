@@ -13,7 +13,7 @@ import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ChickenComponent } from './pages/chicken/chicken.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { PorkComponent } from './pages/pork/pork.component';
 import { SandwichesComponent } from './pages/sandwiches/sandwiches.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
@@ -25,7 +25,6 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        //dodati moduli(svi dole)
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -37,7 +36,6 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        //
         AboutComponent,
         ContactComponent,
         HomeComponent,
@@ -46,7 +44,7 @@ describe('AppComponent', () => {
         SandwichesComponent,
         ShopCartComponent,
         ProductItemComponent,
-        PageNotFoundComponent,
+        ErrorPageComponent,
         CheckOutComponent,
         CartItemComponent,
       ],

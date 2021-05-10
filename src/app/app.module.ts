@@ -18,7 +18,7 @@ import { SandwichesComponent } from './pages/sandwiches/sandwiches.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { ProductItemComponent } from './shared/product-item/product-item.component';
 import { CartItemComponent } from './shared/cart-item/cart-item.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ProductNavComponent } from './shared/product-nav/product-nav.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -37,12 +37,12 @@ import { ProductGroupComponent } from './shared/product-group/product-group.comp
     SandwichesComponent,
     ShopCartComponent,
     ProductItemComponent,
-    PageNotFoundComponent,
     CheckOutComponent,
     CartItemComponent,
     ProductNavComponent,
     MenuComponent,
     ProductGroupComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
