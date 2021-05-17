@@ -1,0 +1,10 @@
+<div class="itemShort-container" (click)="openDialog()" fxLayout="row" fxLayoutAlign="space-between center">
+ <div class="itemShort-info" style="width: 200px;">
+  <h4>{{listItem.name}}</h4>
+  <p>{{listItem.description}}</p>
+  <p>Cena: {{listItem.price}}</p>
+ </div>
+ <div class="itemShort-image">
+  <img src="{{listItem.imagePath}}" alt="SLika proizvoda" style="width: 100px;"> 
+ </div>
+</div>

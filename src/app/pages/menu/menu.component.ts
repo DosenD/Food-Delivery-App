@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductGroup } from '../../shared/product-cart-item.model';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-
- productGroups: ProductGroup[] = [
+  
+  prodGroupArr: ProductGroup[] = []; /*= [
   {
    name: 'Proizvodi od svinjskog mesa',
    imagePath: '../../../assets/images/pork-products.jpg',
@@ -27,11 +30,32 @@ export class MenuComponent implements OnInit {
    description: 'Pogledajte nasu siroku ponudu senviča.',
    linkToGroup: '/sandwiches'
   } as ProductGroup,
- ]
+ ]*/
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase) {}
 
   ngOnInit(): void {
-  }
+    this.db
+      .list('product-groups')
+      .valueChanges()
+      .pipe(
+        map((resData) => {
+          this.prodGroupArr.push(...resData as ProductGroup[]);
+          return this.prodGroupArr;
+        })
+      )
+      .subscribe(
+        (result) => {
+         // console.log(result);
+        },
+        (error) => {
+          if (error) {
+            throw 'Error has occured, no data has been retreved!';
+          }
+        }
+      );
 
+    
+    
+  }
 }

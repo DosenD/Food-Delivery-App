@@ -1,16 +1,16 @@
 <div class="inner inner-product-item" fxLayout="row" fxLayoutAlign="center center">
  <mat-card class="product-item matCard-style">
   <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-   <mat-card-title class="title matCard-title-style" >{{item.name}}</mat-card-title>
+   <mat-card-title class="title matCard-title-style" >{{data.name}}</mat-card-title>
   </mat-card-header>
   <div fxLayout="row" fxLayoutAlign="center center">
-   <img class="matCard-image" src="{{item.imagePath}}" alt="" >
+   <img class="matCard-image" src="{{data.imagePath}}" alt="" >
   </div>
 
   <mat-card-content>
-   <p class="description">{{item.description}}</p>
-   <form (submit)="addToCart()" [formGroup]="form">
-    <mat-form-field appearance="legacy">
+   <p class="description">{{data.description}}</p>
+   <form (submit)="addToCart()" [formGroup]="form" #myForm="ngForm">
+    <mat-form-field appearance="legacy">  
      <mat-label>Kolicina</mat-label>
      <mat-select formControlName="quantity">
       <mat-option
@@ -42,22 +42,20 @@
     </mat-form-field>
     <div class="priceAndAddToCart" fxLayout="row" fxLayoutAlign="space-between center">
      <div class="price" fxFlexAlign="start">
-      <p>Cena: {{item.price}} din.</p>
+      <p>Cena: {{data.price}} din.</p>
      </div>
      <div class="addToCart" fxLayout="column" fxLayoutAlign="center center">
       <div fxLayout="row" fxLayoutAlign="start start">
        <button class="primary" mat-flat-button type="submit"
-        matTooltip="Dodali ste proizvod u korpu!"
-        matTooltipPosition="above"
-        matTooltipClass="tooltip"
-        (mouseenter)="$event.stopImmediatePropagation()" 
-        (mouseleave)="$event.stopImmediatePropagation()" 
-        #tooltip="matTooltip" (click)="showAndHideTooltip()"
-        [disabled]="!form.valid">
+       
+       [disabled]="!form.valid"
+        >
         Dodaj u Korpu!
        </button>
       </div>
-       <mat-error *ngIf="!form.valid">Izaberite namaze i salate</mat-error>
+      <!---->
+      <!--<mat-error *ngIf="!form.valid">Izaberite namaze i salate</mat-error>-->
+       
      </div>
     </div>
    </form>

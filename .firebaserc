@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "food-delivery-83d0c": {
+      "hosting": {
+        "food-delivery-app": [
+          "food-delivery-83d0c"
+        ]
+      }
+    }
+  }
+}

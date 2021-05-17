@@ -2,7 +2,8 @@ export interface ProductGroup {
  name:string,
  imagePath:string,
  description: string,
- linkToGroup: string,
+ linkToGroup?: string,
+ type:string,
 }
 
 
@@ -11,7 +12,7 @@ export interface Product {
  imagePath:string, 
  description: string, 
  price: number,
- type: 'chicken' | 'pork',
+ type:string,
 }
 
 

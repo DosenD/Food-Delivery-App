@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+   apiKey: 'AIzaSyD6eOoWPfccXzzHPUJp7O4WS9hSqEhlGK4',
+   authDomain: 'food-delivery-83d0c.firebaseapp.com',
+   databaseURL: 'https://food-delivery-83d0c-default-rtdb.firebaseio.com',
+   projectId: 'food-delivery-83d0c',
+   storageBucket: 'food-delivery-83d0c.appspot.com',
+   messagingSenderId: '889309385120',
+   appId: '1:889309385120:web:3d8ce55dc05a2f2a1354c5',
+   measurementId: ''
+ }
 };
 
 /*

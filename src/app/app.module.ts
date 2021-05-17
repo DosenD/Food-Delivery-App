@@ -1,10 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +27,7 @@ import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { ProductNavComponent } from './shared/product-nav/product-nav.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { ProductGroupComponent } from './shared/product-group/product-group.component';
+import { ProductOverviewComponent } from './shared/product-overview/product-overview.component';
 
 
 @NgModule({
@@ -42,7 +47,8 @@ import { ProductGroupComponent } from './shared/product-group/product-group.comp
     ProductNavComponent,
     MenuComponent,
     ProductGroupComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ProductOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,10 @@ import { ProductGroupComponent } from './shared/product-group/product-group.comp
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    HttpClientModule,
   ],
   schemas: [
    CUSTOM_ELEMENTS_SCHEMA
@@ -60,6 +70,9 @@ import { ProductGroupComponent } from './shared/product-group/product-group.comp
    HeaderComponent
   ],
   providers: [],
+  entryComponents: [
+   ProductItemComponent
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

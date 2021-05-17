@@ -1,8 +1,16 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatTooltip } from '@angular/material/tooltip';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { NgForm, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem, Product } from 'src/app/shared/product-cart-item.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogData } from '../product-overview/product-overview.component';
+import {
+ MatSnackBar,
+ MatSnackBarHorizontalPosition,
+ MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-product-item',
@@ -10,28 +18,38 @@ import { CartItem, Product } from 'src/app/shared/product-cart-item.model';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
- @ViewChild('tooltip') tooltip!: MatTooltip;
+ @ViewChild('myForm') myForm!: NgForm;
   form!: FormGroup;
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  toppingList: string[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
+  toppingList: any[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
   saladList: string[] = ['kupus', 'zelena salata', 'paradajz', 'bez salate'];
   cartItems: CartItem[] = [];
-  isTooltipDisabled:boolean = true;
- 
-  @Input() item!: Product;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   
+  
+  item!: Product;
+  
+  
+  constructor(
+   private fb: FormBuilder,
+   private cartService: CartService,
+   private _snackBar: MatSnackBar,
+   public dialogRef: MatDialogRef<ProductItemComponent>,
+   @Inject(MAT_DIALOG_DATA) public data: Product
+   ) {}
 
-  constructor(private fb: FormBuilder, private cartService: CartService) {}
 
   ngOnInit() {
+
     this.form = this.fb.group({
-      quantity: new FormControl(1, Validators.required),
+      quantity: new FormControl(null, Validators.required),
       toppings: new FormControl(null, Validators.required),
       salads: new FormControl(null, Validators.required),
     });
+    
   }
   
-  //[matTooltipDisabled]="isTooltipDisabled ? true : false"  matTooltip="Tooltip!"
 
   get quantityControl() {
     return this.form.get('quantity');
@@ -43,24 +61,22 @@ export class ProductItemComponent implements OnInit {
     return this.form.get('salads');
   }
 
-  showAndHideTooltip(){
-   this.tooltip.show()
-   setTimeout(()=>{
-    this.tooltip.hide()
-   }, 2000)
-  }
-
   addToCart() {
     const item = new CartItem(
-     this.item,
+     this.data,
      this.quantityControl?.value,
      this.toppingsChoice?.value,
      this.saladChoice?.value,
     );
     this.cartService.addItems(item);
-    setInterval(()=> {
-     this.form.reset()
-    }, 3000)
+    
+    this._snackBar.open( 'Dodali ste proizvod u korpu', undefined, {
+     horizontalPosition: this.horizontalPosition,
+     verticalPosition: this.verticalPosition,
+     duration: 3000,
+    });
+    this.myForm.resetForm();
+    this.dialogRef.close();
   }
-}
+} 
 

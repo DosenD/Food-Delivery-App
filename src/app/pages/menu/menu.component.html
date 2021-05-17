@@ -3,10 +3,10 @@
   <div class="title-products" fxLayout="row" fxLayoutAlign="center center">
    <h1>Pogledajte našu ponudu</h1>
   </div>
-   <div class="productItems-container" fxLayout="row wrap" fxLayoutAlign="center center">
-    <div *ngFor="let item of productGroups">
-     <app-product-group  [item]="item"></app-product-group>
-    </div>
+  <div class="productItems-container" fxLayout="row wrap" fxLayoutAlign="center center">
+   <div *ngFor="let groupItem of prodGroupArr"> 
+     <app-product-group [groupItem]="groupItem"></app-product-group>
    </div>
+  </div>
  </div>
 </div>

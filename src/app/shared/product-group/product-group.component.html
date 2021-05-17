@@ -1,18 +1,34 @@
 <div class="inner inner-product-group" fxLayout="row" fxLayoutAlign="center center">
  <mat-card class="product-group matCard-style">
   <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-   <mat-card-title class="matCard-title-style" >{{item.name}}</mat-card-title>
+   <mat-card-title class="matCard-title-style" >{{groupItem.name}}</mat-card-title>
   </mat-card-header>
   <div fxLayout="row" fxLayoutAlign="center center">
-   <img class="matCard-image" mat-card-image src="{{item.imagePath}}" alt="" >
+   <img class="matCard-image" mat-card-image src="{{groupItem.imagePath}}" alt="" >
   </div>
-  <mat-card-content>
-   <p class="groupDescription">{{item.description}}</p>
-  </mat-card-content>
-  <div class="linkToGroup" fxLayout="row" fxLayoutAlign="center center">
+ <!-- <div class="linkToGroup" fxLayout="row" fxLayoutAlign="center center">
    <button mat-raised-button class="secondary ">
     <a routerLink="{{item.linkToGroup}}">Poručite</a>
    </button>
-  </div>
+  </div>-->
+  <mat-accordion>
+   <mat-expansion-panel>
+     <mat-expansion-panel-header>
+       <mat-panel-description>
+        {{groupItem.description}}
+       </mat-panel-description>
+     </mat-expansion-panel-header>
+      <div *ngFor="let listItem of barbList">
+       <div *ngIf="groupItem.type === listItem.type">
+        <app-product-overview [listItem]="listItem"></app-product-overview>
+       </div>
+      </div>
+      <div *ngFor="let listItem of sandList">
+       <div *ngIf="groupItem.type === listItem.type">
+        <app-product-overview [listItem]="listItem"></app-product-overview>
+       </div>
+      </div>
+   </mat-expansion-panel>
+ </mat-accordion>
  </mat-card>
 </div>

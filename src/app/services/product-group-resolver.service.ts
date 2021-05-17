@@ -7,11 +7,11 @@ interface ItemGroup {
  productItems: Product[],
 }
 
-export class ProductGroupResolverService implements Resolve<ItemGroup> {
+export class ProductGroupResolverService{} /*implements Resolve<ItemGroup> {
  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<ItemGroup> |
  Promise<ItemGroup> | ItemGroup {
   
  }
 
  
-}
+}*/

@@ -1,12 +1,13 @@
 .wrapper-shop-cart {
   margin: 0 auto;
   .inner-shop-cart {
-    margin-top: 100px;
+    margin-top: 60px;
+    margin-bottom: 50px;
     padding: 10px;
     .title {
       h1 {
-       margin-bottom: 60px;
-       color: var(--text);
+        margin-bottom: 60px;
+        color: var(--text);
       }
     }
     .shop-cart-container {
@@ -15,6 +16,7 @@
     .priceSum {
       padding-top: 25px;
       border-top: 1px dashed var(--text);
+      
       p {
         font-size: 22px;
         margin-bottom: 0px;
@@ -22,10 +24,18 @@
     }
     .forw-back {
       margin-top: 50px;
+      position: fixed;
+      bottom: 0px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 1;
+      width: 100%;
+      padding: 7px;
+      background-color: rgba(255, 255, 255, 0.733);
+
       .back {
         margin-right: 0px;
       }
     }
   }
 }
-

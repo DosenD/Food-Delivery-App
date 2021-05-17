@@ -8,7 +8,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+
 
 
 
@@ -22,12 +26,17 @@ const materialComponents = [
  MatSidenavModule,
  MatSelectModule,
  MatFormFieldModule,
- MatTooltipModule,
+ MatSnackBarModule,
+ MatExpansionModule,
+ MatDialogModule,
+
 ]
 
 @NgModule({
  imports: [materialComponents],
- exports: [materialComponents]
+ exports: [materialComponents],
+ schemas: [CUSTOM_ELEMENTS_SCHEMA],
+ 
  
 })
 

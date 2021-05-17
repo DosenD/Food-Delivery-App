@@ -31,10 +31,10 @@
               "src/assets"
             ],
             "styles": [
-             
               "src/styles.scss",
-              {"input":"src/app/styles/_vars.scss"}
-             
+              {
+                "input": "src/app/styles/_vars.scss"
+              }
             ],
             "scripts": []
           },
@@ -97,10 +97,10 @@
               "src/assets"
             ],
             "styles": [
-              
               "src/styles.scss",
-              {"input":"src/app/styles/_vars.scss"}
-           
+              {
+                "input": "src/app/styles/_vars.scss"
+              }
             ],
             "scripts": []
           }
@@ -129,6 +129,10 @@
               "devServerTarget": "food-delivery-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
