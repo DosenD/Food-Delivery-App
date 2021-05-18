@@ -1,41 +1,49 @@
-.inner-product-item {
-  mat-card.product-item {
-    height: 607px;
-
-    mat-card-header {
-      mat-card-title.title {
-        margin-top: 10px;
-        margin-bottom: 20px;
-      }
-    }
-
-    mat-card-content {
-      p.description {
-        max-width: 280px;
-        height: 40px;
-        width: 100%;
-      }
-      .priceAndAddToCart {
-        .price {
-          padding-top: 10px;
-          p {
-            font-size: 18px;
-            margin-bottom: 0px !important;
-          }
-        }
-        .addToCart {
-          .mat-tooltip {
-            font-size: 20px !important;
-          }
-        }
-      }
-
-      mat-form-field {
-        display: block;
-      }
+ .inner-product-item {
+     
+  //height: 607px;
+  
+  mat-card-header {
+    mat-card-title.title {
+      margin-top: 10px;
+      margin-bottom: 20px;
     }
   }
-}
+
+  mat-card-content {
+    p.description {
+      max-width: 280px;
+      height: 40px;
+      width: 100%;
+    }
+    form {
+     mat-form-field.mat-form-field-infix {
+      width: 300px !important;
+     }
+    }
+    .priceAndAddToCart {
+      .price {
+        padding-top: 10px;
+        margin-right: 10px;
+        p {
+          font-size: 18px;
+          margin-bottom: 0px !important;
+        }
+      }
+      .addToCart {
+        .mat-tooltip {
+          font-size: 20px !important;
+        }
+      }
+    }
+
+    mat-form-field {
+      display: block;
+    }
+  }
+
+ }
+
+
 
 @media only screen and (max-width: 480px) {
   .inner-product-item {

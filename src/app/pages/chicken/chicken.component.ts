@@ -8,7 +8,7 @@ import { Product } from 'src/app/shared/product-cart-item.model';
 })
 export class ChickenComponent implements OnInit {
 
- productItems: Product[] = [
+ productItems: Product[] = []/*
   {
    name: 'Pileće belo meso',
    imagePath: '../../../assets/images/Chicken/chicken-breasts1.jpg',
@@ -38,7 +38,7 @@ export class ChickenComponent implements OnInit {
  price: 250,
 } as Product,
   
- ]
+ ]*/
  
 
   constructor() { }

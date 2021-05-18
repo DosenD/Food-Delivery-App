@@ -60,9 +60,6 @@ body {
 
     .wrapper {
       width: 100vw;
-     
-      
-      
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -90,6 +87,9 @@ body {
   mat-icon {
     color: var(--text);
   }
+  mat-dialog-container.mat-dialog-container {
+   padding: 0px !important;
+  }
   .matCard-style {
    margin-bottom: 10px;
    margin-right: 20px;
@@ -99,7 +99,7 @@ body {
    box-sizing: border-box;
    color: var(--text);
    font-weight: 400;
-   background: var(--inner-back-1);
+   
   }
   .matCard-title-style {
    color: var(--text);
@@ -125,8 +125,5 @@ body {
     &:hover {
       background-color: #4f5255;
     }
-  }
-  .tooltip {
-    font-size: 16px !important;
   }
 }

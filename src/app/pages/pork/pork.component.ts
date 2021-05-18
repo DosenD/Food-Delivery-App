@@ -7,7 +7,7 @@ import { Product } from 'src/app/shared/product-cart-item.model';
   styleUrls: ['./pork.component.scss'],
 })
 export class PorkComponent implements OnInit {
-  productItems: Product[] = [
+  productItems: Product[] = [] /*
     {
       name: 'Pljeva',
       imagePath: '../../../assets/images/pork/gurmanska-pljeskavica.jpg',
@@ -36,7 +36,7 @@ export class PorkComponent implements OnInit {
       description: 'Domaće kobasice na roštilju i tako to neki opis.',
       price: 350,
     } as Product,
-  ];
+  ];*/
 
   constructor() {}
 

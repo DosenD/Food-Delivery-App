@@ -32,8 +32,9 @@ export class ProductOverviewComponent implements OnInit {
 
   openDialog(): void {
    const dialogRef = this.dialog.open(ProductItemComponent, {
-     width: '450px',
-     data: {name: this.listItem.name, description: this.listItem.description, imagePath: this.listItem.imagePath, price: this.listItem.price, type: this.listItem.type}
+     width: '350px',
+     //height: '500px',
+     data: {name: this.listItem.name, description: this.listItem.description, imagePath: this.listItem.imagePathMed, price: this.listItem.price, type: this.listItem.type}
    });
 
    /*dialogRef.afterClosed().subscribe(result => {

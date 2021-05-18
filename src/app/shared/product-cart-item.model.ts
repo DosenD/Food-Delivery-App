@@ -1,6 +1,7 @@
 export interface ProductGroup {
  name:string,
- imagePath:string,
+ imagePathMed:string,
+ imagePathSmall?:string,
  description: string,
  linkToGroup?: string,
  type:string,
@@ -9,7 +10,8 @@ export interface ProductGroup {
 
 export interface Product {
  name: string,
- imagePath:string, 
+ imagePathMed:string, 
+ imagePathSmall:string, 
  description: string, 
  price: number,
  type:string,
