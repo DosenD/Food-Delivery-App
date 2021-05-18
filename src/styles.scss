@@ -48,10 +48,7 @@ $materijal-practice-app-theme: mat-light-theme(
 @import "./app/styles/products-shared.scss";
 
 
-html,
-body {
-  height: 100%;
-}
+
 
 body {
   margin: 0;
@@ -60,13 +57,16 @@ body {
 
     .wrapper {
       width: 100vw;
+      height: 100vh;
+      overflow: scroll;
+      
+      
       display: flex;
       flex-direction: row;
       justify-content: center;
 
       .inner {
         max-width: 1200px;
-        min-width: 300px;
         width: 100%;
         box-sizing: border-box;
         a {
@@ -88,13 +88,13 @@ body {
     color: var(--text);
   }
   mat-dialog-container.mat-dialog-container {
+   margin-top: 30px;
    padding: 0px !important;
   }
   .matCard-style {
    margin-bottom: 10px;
    margin-right: 20px;
    padding: 20px 10px 10px 10px;
-   max-width: 300px;
    width: 100%;
    box-sizing: border-box;
    color: var(--text);
@@ -107,8 +107,8 @@ body {
    border-bottom: 2px dotted var(--nav-back);
   }
   .matCard-image {
-   margin: 10px 0px;
-   max-width: 300px;
+   max-width: 400px;
+   width: 100%;
    height: auto;
   }
   

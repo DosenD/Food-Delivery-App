@@ -49,7 +49,9 @@ export class ProductItemComponent implements OnInit {
     });
     
   }
-  
+  dialogClose(){
+   this.dialogRef.close()
+  }
 
   get quantityControl() {
     return this.form.get('quantity');

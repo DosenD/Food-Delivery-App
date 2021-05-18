@@ -1,11 +1,13 @@
 <div class="inner inner-product-item" fxLayout="column" fxLayoutAlign="center center">
  <!--<mat-card class="product-item matCard-style">-->
+  
+  <div class="product-single-image" fxLayout="row" fxLayoutAlign="center center">
+   <a (click)="dialogClose()"><mat-icon>cancel</mat-icon></a>
+   <img class="matCard-image" src="{{data.imagePathMed}}" alt="" >
+  </div>
   <mat-card-header fxLayout="row" fxLayoutAlign="center center">
    <mat-card-title class="title matCard-title-style" >{{data.name}}</mat-card-title>
   </mat-card-header>
-  <div fxLayout="row" fxLayoutAlign="center center">
-   <img class="matCard-image" src="{{data.imagePathMed}}" alt="" >
-  </div>
 
   <mat-card-content>
    <p class="description">{{data.description}}</p>
