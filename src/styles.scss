@@ -20,13 +20,13 @@ $materijal-practice-app-warn: mat-palette($mat-red);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $materijal-practice-app-theme: mat-light-theme(
-  (
-    color: (
-      primary: $materijal-practice-app-primary,
-      accent: $materijal-practice-app-accent,
-      warn: $materijal-practice-app-warn,
-    ),
-  )
+    (
+      color: (
+        primary: $materijal-practice-app-primary,
+        accent: $materijal-practice-app-accent,
+        warn: $materijal-practice-app-warn,
+      ),
+    )
 );
 
 // Include theme styles for core and each component used in your app.
@@ -39,15 +39,10 @@ $materijal-practice-app-theme: mat-light-theme(
 @import "./app/pages/home/home.component.scss";
 @import "./app/pages/about/about.component.scss";
 @import "./app/pages/contact/contact.component.scss";
-@import "./app/pages/chicken/chicken.component.scss";
-@import "./app/pages/pork/pork.component.scss";
-@import "./app/pages/sandwiches/sandwiches.component.scss";
 @import "./app/pages/shop-cart/shop-cart.component.scss";
 @import "./app/shared/cart-item/cart-item.component.scss";
 @import "./app/shared/product-group/product-group.component.scss";
 @import "./app/styles/products-shared.scss";
-
-
 
 
 body {
@@ -55,100 +50,110 @@ body {
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
-    .wrapper {
-      width: 100vw;
-      height: 100vh;
-      overflow: scroll;
-      
-      
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
 
-      .inner {
-        max-width: 1200px;
-        width: 100%;
-        box-sizing: border-box;
-        a {
-          text-decoration: none;
-          color: white;
-        }
-        p {
-          font-size: 15px;
-        }
-        h1 {
-          font-weight: 300;
-          font-size: 26px;
-          letter-spacing: 0.07em;
-        }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .inner {
+      max-width: 1200px;
+      width: 100%;
+      box-sizing: border-box;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      h1 {
+        font-weight: 300;
+        font-size: 26px;
+        letter-spacing: 0.07em;
       }
     }
-  
+  }
+
   mat-icon {
     color: var(--text);
   }
-  div.cdk-global-overlay-wrapper{
-   div.cdk-overlay-pane{  //panel koji sadrzi mat-dialog
-    z-index: 99999;
-    max-width: 90vh !important;
-    width: 400px !important;
-    mat-dialog-container.mat-dialog-container {
-     padding: 0px !important;
+
+  div.cdk-global-overlay-wrapper {
+    div.cdk-overlay-pane { //panel koji sadrzi mat-dialog
+      z-index: 99999;
+      max-width: 90vh !important;
+      width: 400px !important;
+
+      mat-dialog-container.mat-dialog-container {
+        padding: 0px !important;
+      }
     }
-   }
   }
 
   @media only screen and (max-width: 480px) {
-   div.cdk-global-overlay-wrapper{
-    div.cdk-overlay-pane{ 
-     height: 100%;
+    div.cdk-global-overlay-wrapper {
+      div.cdk-overlay-pane {
+        height: 100%;
+      }
     }
-   }
- }
-  
-   
+  }
+
+
   .matCard-style {
-   margin-bottom: 10px;
-   margin-right: 20px;
-   padding: 20px 10px 10px 10px;
-   width: 100%;
-   box-sizing: border-box;
-   color: var(--text);
-   font-weight: 400;
-   
+    margin-bottom: 10px;
+    margin-right: 20px;
+    padding: 20px 10px 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--text);
+    font-weight: 400;
   }
+
   mat-card-title.matCard-title-style {
-   font-size: 20px !important;
-   color: var(--text);
-   padding-bottom: 10px;
-   border-bottom: 2px dotted var(--nav-back);
+    font-size: 20px !important;
+    color: var(--text);
+    margin-bottom: 0px !important;
+    padding-bottom: 10px;
   }
+
   .matCard-image {
-   max-width: 400px;
-   width: 100%;
-   height: auto;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
   }
-  .mat-snack-bar-container{
-   position: absolute !important;
-   bottom: 0 !important;
-   left: 50% !important;
-   transform: translate(-50%) !important;
-   max-width: 210px !important;
-   height: 45px !important;
-   text-align: center !important;
- 
+
+  .mat-snack-bar-container {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translate(-50%) !important;
+    max-width: 210px !important;
+    height: 45px !important;
+    text-align: center !important;
+
   }
-  
+
   button.primary {
     background-color: var(--nav-back);
     color: var(--white);
+
     &:hover {
       background-color: #790606;
     }
   }
+
   button.secondary {
     background-color: #5d6166;
     color: var(--white);
+
     &:hover {
       background-color: #4f5255;
     }

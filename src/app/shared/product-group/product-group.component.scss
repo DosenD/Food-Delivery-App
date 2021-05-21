@@ -1,6 +1,7 @@
 .inner-product-group {
   mat-card.product-group {
     padding: 10px 0 0 0 !important;
+    max-width: 400px;
 
     .mat-card-header-text {
       margin: 10px 0 20px 0;
@@ -12,6 +13,7 @@
         width: 100%;
       }
     }
+
     .linkToGroup {
       position: absolute;
       bottom: 20px;
@@ -19,15 +21,8 @@
       transform: translate(-50%, 0);
     }
   }
-  mat-accordion {
-   mat-expansion-panel{
-    mat-expansion-panel-header{
-     border-bottom: 1px dashed rgba(0, 0, 0, 0.431);
-    }
-   }
-
-  }
 }
+
 @media only screen and (max-width: 480px) {
   .inner-product-group {
     mat-card.product-group {

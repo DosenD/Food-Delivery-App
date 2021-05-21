@@ -10,12 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './material/material.module';
 import { AboutComponent } from './pages/about/about.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
-import { ChickenComponent } from './pages/chicken/chicken.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
-import { PorkComponent } from './pages/pork/pork.component';
-import { SandwichesComponent } from './pages/sandwiches/sandwiches.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { CartItemComponent } from './shared/cart-item/cart-item.component';
 import { ProductItemComponent } from './shared/product-item/product-item.component';
@@ -39,9 +36,6 @@ import { ProductItemComponent } from './shared/product-item/product-item.compone
         AboutComponent,
         ContactComponent,
         HomeComponent,
-        PorkComponent,
-        ChickenComponent,
-        SandwichesComponent,
         ShopCartComponent,
         ProductItemComponent,
         ErrorPageComponent,

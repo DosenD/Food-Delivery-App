@@ -10,7 +10,6 @@ import { Product, ProductGroup } from '../../shared/product-cart-item.model';
 })
 export class ProductGroupComponent implements OnInit {
   @Input() groupItem!: ProductGroup;
-  productGroups!: ProductGroup[];
   productList: Product[] = [];
   barbList: Product[] = [];
   sandList: Product[] = [];
@@ -22,7 +21,7 @@ export class ProductGroupComponent implements OnInit {
       .list('products')
       .valueChanges()
       .pipe(
-        map((resData) => {
+        map((resData: unknown[]) => {
           this.productList.push(...(resData as Product[]));
           if (this.groupItem.type === 'barbecue') {
             this.productList.map((item) => {
@@ -43,7 +42,7 @@ export class ProductGroupComponent implements OnInit {
         })
       )
       .subscribe(
-        (result) => {
+        (result:void) => {
           // console.log(result);
         },
         (error) => {

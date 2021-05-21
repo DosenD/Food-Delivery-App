@@ -1,21 +1,17 @@
 <div class="inner inner-product-item" fxLayout="column" fxLayoutAlign="center center">
- <!--<mat-card class="product-item matCard-style">-->
-  
   <div class="product-single-image" fxLayout="row" fxLayoutAlign="center center">
-   <a (click)="dialogClose()"><mat-icon>cancel</mat-icon></a>
+   <a (click)="dialogClose()">
+     <mat-icon class="close-single-product">cancel</mat-icon>
+   </a>
    <img class="matCard-image" src="{{data.imagePathMed}}" alt="Slika kategorije proizvoda" >
   </div>
- <!--<mat-card-header fxLayout="row" fxLayoutAlign="start center">--> 
-  <div class="title-container">
+  <div class="title-container" fxLayout="row" fxLayoutAlign="start center">
    <mat-card-title class="title matCard-title-style" >{{data.name}}</mat-card-title>
   </div>
-   
-  <!--</mat-card-header>-->
-
   <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
    <p class="description">{{data.description}}</p>
-   <form (submit)="addToCart()" [formGroup]="form" #myForm="ngForm" class="single-item-form">
-    <mat-form-field appearance="legacy">  
+   <form class="single-item-form" (submit)="addToCart()" [formGroup]="form" #myForm="ngForm" >
+    <mat-form-field appearance="legacy">
      <mat-label>Kolicina</mat-label>
      <mat-select formControlName="quantity">
       <mat-option
@@ -28,17 +24,17 @@
     <mat-form-field appearance="legacy">
      <mat-label>Namazi</mat-label>
      <mat-select formControlName="toppings" multiple>
-      <mat-option 
+      <mat-option
        *ngFor="let topping of toppingList"
        [value]="topping">{{topping}}
       </mat-option>
      </mat-select>
-     <mat-error *ngIf="toppingsChoice?.errors?.required">Morate izabrati namaze</mat-error> 
+     <mat-error *ngIf="toppingsChoice?.errors?.required">Morate izabrati namaze</mat-error>
     </mat-form-field>
     <mat-form-field appearance="legacy">
      <mat-label>Salate</mat-label>
      <mat-select formControlName="salads" multiple>
-      <mat-option 
+      <mat-option
        *ngFor="let salad of saladList"
        [value]="salad">{{salad}}
       </mat-option>
@@ -60,7 +56,5 @@
      </div>
     </div>
    </form>
-   
   </mat-card-content>
- <!--</mat-card>-->
 </div>

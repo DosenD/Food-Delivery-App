@@ -6,8 +6,8 @@ import { ProductItemComponent } from '../product-item/product-item.component';
 
 export interface DialogData {
  name: string,
- imagePath:string, 
- description: string, 
+ imagePath:string,
+ description: string,
  price: number,
  type:string,
 }
@@ -33,8 +33,13 @@ export class ProductOverviewComponent implements OnInit {
   openDialog(): void {
    const dialogRef = this.dialog.open(ProductItemComponent, {
      width: '350px',
-     //height: '500px',
-     data: {name: this.listItem.name, description: this.listItem.description, imagePathMed: this.listItem.imagePathMed, price: this.listItem.price, type: this.listItem.type}
+     data: {
+       name: this.listItem.name,
+       description: this.listItem.description,
+       imagePathMed: this.listItem.imagePathMed,
+       price: this.listItem.price,
+       type: this.listItem.type
+     }
    });
 
    /*dialogRef.afterClosed().subscribe(result => {
@@ -42,10 +47,6 @@ export class ProductOverviewComponent implements OnInit {
      this.name = result;
    });*/
  }
-  
-
-  
-
 }
 
 

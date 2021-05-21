@@ -13,8 +13,8 @@
         {{groupItem.description}}
        </mat-panel-description>
      </mat-expansion-panel-header>
-      <div *ngFor="let listItem of barbList">
-       <div *ngIf="groupItem.type === listItem.type">
+     <div *ngFor="let listItem of barbList">
+       <div *ngIf="groupItem.type === listItem.type" class="barbList">
         <app-product-overview [listItem]="listItem"></app-product-overview>
        </div>
       </div>

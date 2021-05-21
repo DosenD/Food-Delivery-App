@@ -11,14 +11,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
-import { HeaderComponent } from './header/header.component';
 
+import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PorkComponent } from './pages/pork/pork.component';
-import { ChickenComponent } from './pages/chicken/chicken.component';
-import { SandwichesComponent } from './pages/sandwiches/sandwiches.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { ProductItemComponent } from './shared/product-item/product-item.component';
 import { CartItemComponent } from './shared/cart-item/cart-item.component';
@@ -37,9 +34,6 @@ import { ProductOverviewComponent } from './shared/product-overview/product-over
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    PorkComponent,
-    ChickenComponent,
-    SandwichesComponent,
     ShopCartComponent,
     ProductItemComponent,
     CheckOutComponent,
