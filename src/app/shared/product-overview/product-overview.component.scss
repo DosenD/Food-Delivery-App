@@ -1,4 +1,17 @@
 .itemShort-container {
+ padding: 10px 0 10px 0;
  border-bottom: 1px dashed rgba(0, 0, 0, 0.431);
  cursor: pointer;
+ .itemShort-info {
+  width: 60%;
+  margin-right: 10px;
+  h3 {
+   font-size: 18px;
+  }
+ }
+ .itemShort-image{
+  img {
+   width: 100px;
+  }
+ }
 }

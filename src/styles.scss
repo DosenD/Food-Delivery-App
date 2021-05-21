@@ -87,10 +87,26 @@ body {
   mat-icon {
     color: var(--text);
   }
-  mat-dialog-container.mat-dialog-container {
-   margin-top: 30px;
-   padding: 0px !important;
+  div.cdk-global-overlay-wrapper{
+   div.cdk-overlay-pane{  //panel koji sadrzi mat-dialog
+    z-index: 99999;
+    max-width: 90vh !important;
+    width: 400px !important;
+    mat-dialog-container.mat-dialog-container {
+     padding: 0px !important;
+    }
+   }
   }
+
+  @media only screen and (max-width: 480px) {
+   div.cdk-global-overlay-wrapper{
+    div.cdk-overlay-pane{ 
+     height: 100%;
+    }
+   }
+ }
+  
+   
   .matCard-style {
    margin-bottom: 10px;
    margin-right: 20px;
@@ -101,7 +117,8 @@ body {
    font-weight: 400;
    
   }
-  .matCard-title-style {
+  mat-card-title.matCard-title-style {
+   font-size: 20px !important;
    color: var(--text);
    padding-bottom: 10px;
    border-bottom: 2px dotted var(--nav-back);
@@ -110,6 +127,16 @@ body {
    max-width: 400px;
    width: 100%;
    height: auto;
+  }
+  .mat-snack-bar-container{
+   position: absolute !important;
+   bottom: 0 !important;
+   left: 50% !important;
+   transform: translate(-50%) !important;
+   max-width: 210px !important;
+   height: 45px !important;
+   text-align: center !important;
+ 
   }
   
   button.primary {

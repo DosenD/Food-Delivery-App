@@ -47,27 +47,13 @@
         <mat-icon class="arrowDown">arrow_drop_down</mat-icon>
        </mat-list-item>
        <mat-divider class="side-menu-div"></mat-divider>
-       <mat-list-item>
-        <div class="sideNav-item" (click)="fillerToggle($event)" fxLayout="row">
+       <mat-list-item routerLink="/menu">
+        <div class="sideNav-item" fxLayout="row">
          <mat-icon>library_books</mat-icon>
          <h3>Meni</h3>
-         <mat-icon class="arrowDown">arrow_drop_down</mat-icon>
         </div>
        </mat-list-item>
-       <mat-divider class="side-menu-div" *ngIf="showFiller"></mat-divider>
-       <div class="menu-container" *ngIf="showFiller">
-        <mat-list-item>
-         <a routerLink="/pork">Svinjsko meso</a>
-        </mat-list-item>
-        <mat-list-item>
-         <a routerLink="/chicken">Piletina</a>
-        </mat-list-item>
-        <mat-list-item>
-         <a routerLink="/sandwiches">Sendvici</a>
-        </mat-list-item>
-       </div>
        <mat-divider class="side-menu-div"></mat-divider>
-
        <mat-list-item>
         <mat-icon>store</mat-icon>
         <a routerLink="/about">O nama</a>

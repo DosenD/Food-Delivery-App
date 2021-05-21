@@ -3,15 +3,18 @@
   
   <div class="product-single-image" fxLayout="row" fxLayoutAlign="center center">
    <a (click)="dialogClose()"><mat-icon>cancel</mat-icon></a>
-   <img class="matCard-image" src="{{data.imagePathMed}}" alt="" >
+   <img class="matCard-image" src="{{data.imagePathMed}}" alt="Slika kategorije proizvoda" >
   </div>
-  <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+ <!--<mat-card-header fxLayout="row" fxLayoutAlign="start center">--> 
+  <div class="title-container">
    <mat-card-title class="title matCard-title-style" >{{data.name}}</mat-card-title>
-  </mat-card-header>
+  </div>
+   
+  <!--</mat-card-header>-->
 
-  <mat-card-content>
+  <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
    <p class="description">{{data.description}}</p>
-   <form (submit)="addToCart()" [formGroup]="form" #myForm="ngForm">
+   <form (submit)="addToCart()" [formGroup]="form" #myForm="ngForm" class="single-item-form">
     <mat-form-field appearance="legacy">  
      <mat-label>Kolicina</mat-label>
      <mat-select formControlName="quantity">
@@ -49,18 +52,15 @@
      <div class="addToCart" fxLayout="column" fxLayoutAlign="center center">
       <div fxLayout="row" fxLayoutAlign="start start">
        <button class="primary" mat-flat-button type="submit"
-       
-       [disabled]="!form.valid"
-        >
+       [disabled]="!form.valid">
         Dodaj u Korpu!
        </button>
       </div>
-      <!---->
       <!--<mat-error *ngIf="!form.valid">Izaberite namaze i salate</mat-error>-->
-       
      </div>
     </div>
    </form>
+   
   </mat-card-content>
  <!--</mat-card>-->
 </div>

@@ -24,8 +24,8 @@ export class ProductItemComponent implements OnInit {
   toppingList: any[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
   saladList: string[] = ['kupus', 'zelena salata', 'paradajz', 'bez salate'];
   cartItems: CartItem[] = [];
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+ // horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+ //verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   
   
   item!: Product;
@@ -73,9 +73,9 @@ export class ProductItemComponent implements OnInit {
     this.cartService.addItems(item);
     
     this._snackBar.open( 'Dodali ste proizvod u korpu', undefined, {
-     horizontalPosition: this.horizontalPosition,
-     verticalPosition: this.verticalPosition,
-     duration: 3000,
+     //horizontalPosition: this.horizontalPosition,
+     //verticalPosition: this.verticalPosition,
+     duration: 2000,
     });
     this.myForm.resetForm();
     this.dialogRef.close();

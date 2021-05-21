@@ -9,7 +9,7 @@ import { CartItem } from '../shared/product-cart-item.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  showFiller: boolean = false;
+  
   isOpen: boolean = false;
   private itmNumberSub!: Subscription;
   cartItems: CartItem[] = [];
@@ -49,10 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     event.preventDefault();
     this.burgerActive = !this.burgerActive;
   }
-  fillerToggle(event: Event) {
-    event.preventDefault();
-    this.showFiller = !this.showFiller;
-  }
+  
   toggleIsOpen() {
     this.isOpen = !this.isOpen;
   }
