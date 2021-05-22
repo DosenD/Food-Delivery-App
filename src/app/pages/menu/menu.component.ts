@@ -10,7 +10,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  
   prodGroupArr: ProductGroup[] = []; /*= [
   {
    name: 'Proizvodi od svinjskog mesa',
@@ -45,7 +44,7 @@ export class MenuComponent implements OnInit {
         })
       )
       .subscribe(
-        (result) => {
+        (result: ProductGroup[]) => {
          // console.log(result);
         },
         (error) => {
@@ -55,7 +54,7 @@ export class MenuComponent implements OnInit {
         }
       );
 
-    
-    
+
+
   }
 }

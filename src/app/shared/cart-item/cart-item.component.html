@@ -8,7 +8,7 @@
   <p>Namazi: {{ item.toppings }}</p>
   <p>Salate: {{ item.salads }}</p>
  </div>
- <div class="priceAndRemove" fxLayout="row" fxLayoutAlign="space-between center">
+ <div class="priceAndRemove" fxLayout="column" fxLayoutAlign="space-between end">
   <div class="price">
    <p>cena: {{ item.sum || item.product.price * item.quantity}} din.</p>
   </div>

@@ -13,15 +13,11 @@ import { Router } from '@angular/router';
 export class ShopCartComponent implements OnInit, OnDestroy {
   index!: number;
   private cartItemsSub!: Subscription;
-  sum: number = 0;
+  sum = 0;
   data!: any;
-  duplicateItemSum!: number;
-
   cartItems: CartItem[] = [];
   localData: CartItem[] = [];
-  resultData: CartItem[] = [];
-  quantityArr: [] = [];
-  
+
 
   constructor(
    private cartService: CartService,
@@ -29,37 +25,41 @@ export class ShopCartComponent implements OnInit, OnDestroy {
    private browserStorageService: BrowserStorageService,
   ) {}
 
-  calcSum() {
-    this.sum = 0;                 //must reset sum to zero before looping through cartItems
-    this.cartItems.forEach((item) => {
+  calcSum(): void {
+    this.sum = 0;                 // must reset sum to zero before looping through cartItems
+    this.cartItems.forEach((item: CartItem) => {
       this.sum += item.product.price * item.quantity;
       return this.sum;
     });
   }
-  
-  ngOnInit() {
-    this.cartService.checkSessionData()
+
+  ngOnInit(): void {
+    this.cartService.checkSessionData();
     this.cartItemsSub = this.cartService.items.subscribe( result => {
-     this.cartItems = result
-      this.calcSum();
+     this.cartItems = result;
+     this.calcSum();
     });
   }
-  
-  onChangeSum(index: number) {
-   this.cartService.deleteItems(index)
+
+  onChangeSum(index: number): void {
+   this.cartService.deleteItems(index);
    this.calcSum();
    this.browserStorageService.setSessionData(this.cartItems);
  }
- 
-  goBack() {
+
+  goBack(): void {
     this.router.navigate(['/menu']);
   }
 
-  goForward() {
+  goForward(): void {
     this.router.navigate(['/checkOut']);
   }
 
-  ngOnDestroy() {
+  clearItems(): void{
+    this.cartService.resetItems();
+  }
+
+  ngOnDestroy(): void {
    this.cartItemsSub.unsubscribe();
  }
 

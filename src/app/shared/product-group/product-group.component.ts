@@ -24,7 +24,7 @@ export class ProductGroupComponent implements OnInit {
         map((resData: unknown[]) => {
           this.productList.push(...(resData as Product[]));
           if (this.groupItem.type === 'barbecue') {
-            this.productList.map((item) => {
+            this.productList.map((item: Product) => {
               if (item.type === 'barbecue') {
                 this.barbList.push(item as Product);
               }
@@ -42,7 +42,7 @@ export class ProductGroupComponent implements OnInit {
         })
       )
       .subscribe(
-        (result:void) => {
+        (result: void) => {
           // console.log(result);
         },
         (error) => {

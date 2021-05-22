@@ -21,16 +21,11 @@ export class ProductItemComponent implements OnInit {
  @ViewChild('myForm') myForm!: NgForm;
   form!: FormGroup;
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  toppingList: any[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
+  toppingList: string[] = ['majonez', 'pavlaka', 'kecap', 'bez namaza'];
   saladList: string[] = ['kupus', 'zelena salata', 'paradajz', 'bez salate'];
   cartItems: CartItem[] = [];
- // horizontalPosition: MatSnackBarHorizontalPosition = 'center';
- //verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  
-  
   item!: Product;
-  
-  
+
   constructor(
    private fb: FormBuilder,
    private cartService: CartService,
@@ -40,17 +35,16 @@ export class ProductItemComponent implements OnInit {
    ) {}
 
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.form = this.fb.group({
       quantity: new FormControl(null, Validators.required),
       toppings: new FormControl(null, Validators.required),
       salads: new FormControl(null, Validators.required),
     });
-    
   }
-  dialogClose(){
-   this.dialogRef.close()
+  dialogClose(): void{
+   this.dialogRef.close();
   }
 
   get quantityControl() {
@@ -71,14 +65,11 @@ export class ProductItemComponent implements OnInit {
      this.saladChoice?.value,
     );
     this.cartService.addItems(item);
-    
     this._snackBar.open( 'Dodali ste proizvod u korpu', undefined, {
-     //horizontalPosition: this.horizontalPosition,
-     //verticalPosition: this.verticalPosition,
      duration: 2000,
     });
     this.myForm.resetForm();
     this.dialogRef.close();
   }
-} 
+}
 

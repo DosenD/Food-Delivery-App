@@ -8,18 +8,17 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent  {
- @Input() item!:CartItem;
- @Input() index!:number;
- @Output() updatePrice = new EventEmitter<number>()
- 
- 
+ @Input() item!: CartItem;
+ @Input() index!: number;
+ @Output() updatePrice = new EventEmitter<number>();
+
+
   constructor(private cartService: CartService) { }
 
 
-  cartItems:CartItem[] = [];
+  cartItems: CartItem[] = [];
 
-  onDeleteItem(index:number){
-   this.cartService.deleteItems(index)
+  onDeleteItem(index: number): void{
+   this.cartService.deleteItems(index);
   }
-
 }
