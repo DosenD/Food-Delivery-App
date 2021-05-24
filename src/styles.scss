@@ -45,18 +45,26 @@ $materijal-practice-app-theme: mat-light-theme(
 @import "./app/styles/products-shared.scss";
 
 
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100vh;
+  overflow-y: scroll;
 
   .wrapper {
     width: 100vw;
     height: 100vh;
-    overflow: scroll;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow-y: scroll;
+
 
     .inner {
       max-width: 1200px;
@@ -126,7 +134,10 @@ body {
     max-width: 400px;
     width: 100%;
     height: auto;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
   }
+
 
   .mat-snack-bar-container {
     position: absolute !important;

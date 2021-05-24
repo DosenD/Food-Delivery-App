@@ -65,7 +65,7 @@ export class ProductItemComponent implements OnInit {
      this.saladChoice?.value,
     );
     this.cartService.addItems(item);
-    this._snackBar.open( 'Dodali ste proizvod u korpu', undefined, {
+    this._snackBar.open('Dodali ste proizvod u korpu', undefined, {
      duration: 2000,
     });
     this.myForm.resetForm();

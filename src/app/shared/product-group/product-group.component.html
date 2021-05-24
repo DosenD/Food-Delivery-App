@@ -1,17 +1,12 @@
 <div class="inner inner-product-group" fxLayout="row" fxLayoutAlign="center center">
  <mat-card class="product-group matCard-style">
-  <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-   <mat-card-title class="matCard-title-style" >{{groupItem.name}}</mat-card-title>
-  </mat-card-header>
   <div fxLayout="row" fxLayoutAlign="center center">
    <img class="matCard-image" mat-card-image src="{{groupItem.imagePathMed}}" alt="" >
   </div>
   <mat-accordion>
    <mat-expansion-panel>
      <mat-expansion-panel-header>
-       <mat-panel-description>
-        {{groupItem.description}}
-       </mat-panel-description>
+        {{groupItem.name}}
      </mat-expansion-panel-header>
      <div *ngFor="let listItem of barbList">
        <div *ngIf="groupItem.type === listItem.type" class="barbList">

@@ -47,7 +47,7 @@ export class ProductGroupComponent implements OnInit {
         },
         (error) => {
           if (error) {
-            throw 'Error has occured, no data has been retreved!';
+            throw new Error('Error has occurred, no data has been retrieved!');
           }
         }
       );

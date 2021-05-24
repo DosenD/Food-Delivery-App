@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Product, CartItem } from 'src/app/shared/product-cart-item.model';
+import { CartItem, OrderItem } from 'src/app/shared/product-cart-item.model';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -16,42 +16,65 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService, private fb: FormBuilder) { }
 
   private cartItemsSub!: Subscription;
-  cartItem!:CartItem;
+  cartItem!: CartItem;
   cartItems: CartItem[] = [];
   form!: FormGroup;
-  firstName!: FormControl;
-  lastName!: FormControl;
-  sum:number = 0;
- 
- 
-  
+  sum = 0;
+
   ngOnInit(): void {
    this.cartItemsSub = this.cartService.items.subscribe(result => {
     this.cartItems = result;
     this.cartItems.forEach(a => this.sum += a.product.price * a.quantity)
 
-   })
+   });
 
    this.form = this.fb.group ({
     firstName: new FormControl(null, Validators.required),
     lastName: new FormControl(null, Validators.required),
     streetName: new FormControl(null, Validators.required),
     houseOrBuildingNum: new FormControl(null, Validators.required),
-    appartmentNum: new FormControl(null, Validators.required),
-    
-   })
+    apartmentNum: new FormControl(null, Validators.required),
+    phoneNum: new FormControl(null, Validators.required),
+   });
   }
 
-  ngOnDestroy(){
-   this.cartItemsSub.unsubscribe()
+  ngOnDestroy(): void{
+   this.cartItemsSub.unsubscribe();
   }
-  getFirstName(){
-   return this.form.get('firstName')
+  // input value getters
+
+  get firstName(){
+   return this.form.get('firstName');
   }
 
-  addOrder(){
-   
+  get lastName(){
+    return this.form.get('lastName');
+  }
+  get streetName(){
+    return this.form.get('streetName');
+  }
+  get houseOrBuildingNum(){
+    return this.form.get('houseOrBuildingNum');
+  }
+  get apartmentNum(){
+    return this.form.get('apartmentNum');
+  }
+  get phoneNumber(){
+    return this.form.get('phoneNum');
+  }
 
+
+  addOrder(): void{
+  const order: OrderItem = {
+    item: this.cartItem,
+    firstName: this.firstName?.value,
+    lastName: this.lastName?.value,
+    streetName: this.streetName?.value,
+    houseOrBuildNum: this.houseOrBuildingNum?.value,
+    apartmentNum: this.apartmentNum?.value,
+    phoneNum: this.phoneNumber?.value,
+    } as OrderItem;
+  console.log(order);
   }
 
 }
