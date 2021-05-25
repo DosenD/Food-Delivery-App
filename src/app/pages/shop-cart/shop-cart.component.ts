@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CartItem } from 'src/app/shared/product-cart-item.model';
+import { CartItem } from 'src/app/shared/all-models';
 import { CartService } from '../../services/cart.service';
 import { BrowserStorageService } from '../../services/browser-storage.service';
 import { Subscription } from 'rxjs';

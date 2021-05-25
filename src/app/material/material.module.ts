@@ -15,29 +15,29 @@ import {MatInputModule} from '@angular/material/input';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 
-
-
 const materialComponents = [
- MatButtonModule,
- MatProgressSpinnerModule,
- MatTabsModule,
- MatListModule,
- MatIconModule,
- MatCardModule,
- MatSidenavModule,
- MatSelectModule,
- MatFormFieldModule,
- MatSnackBarModule,
- MatExpansionModule,
- MatDialogModule,
- MatInputModule,
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatListModule,
+  MatIconModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatSnackBarModule,
+  MatExpansionModule,
+  MatDialogModule,
+  MatInputModule,
+
 ];
 
 @NgModule({
- imports: [materialComponents],
- exports: [materialComponents],
- schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [materialComponents],
+  exports: [materialComponents],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
 
-export class MaterialModule { }
+export class MaterialModule {
+}

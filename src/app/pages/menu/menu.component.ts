@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductGroup } from '../../shared/product-cart-item.model';
+import { ProductGroup } from '../../shared/all-models';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 

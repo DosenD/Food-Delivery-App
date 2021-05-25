@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import { Product, ProductGroup } from '../../shared/product-cart-item.model';
+import { Product, ProductGroup } from '../all-models';
 
 @Component({
   selector: 'app-product-group',

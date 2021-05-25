@@ -1,20 +1,46 @@
 <div class="wrapper wrapper-checkOut">
   <div class="inner inner-checkOut">
-    <div class="titleOrder" fxLayout="row" fxLayoutAlign="center center">
+    <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
       <h3>Vaša narudžbina</h3>
     </div>
-    <div class="orderInfo" *ngFor="let cartItem of cartItems" fxLayout="row" fxLayoutAlign="space-between">
-      <div class="itemName">
-        <p>{{cartItem.product.name}}</p>
-      </div>
-      <div class="itemAmount">
-        <p>Kom: {{ cartItem.quantity }}</p>
-      </div>
-      <div class="itemPrice">
-        <p>cena: {{ cartItem.quantity * cartItem.product.price}} din.</p>
-      </div>
-      <div>{{cartItem.salads}}</div>
-    </div>
+    <table class="order-items">
+      <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Kolicina</th>
+        <th>Salate</th>
+        <th>Namazi</th>
+        <th>Cena</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cartItem of cartItems">
+        <td>{{cartItem.product.name}}</td>
+        <td>{{cartItem.quantity}}</td>
+        <td>{{cartItem.salads}}</td>
+        <td>{{cartItem.toppings}}</td>
+        <td>{{ cartItem.quantity * cartItem.product.price}} din.</td>
+      </tr>
+      </tbody>
+    </table>
+    <!-- <div class="orderInfo" *ngFor="let cartItem of cartItems" fxLayout="row" fxLayoutAlign="space-between">
+
+       <div class="itemName">
+         <p>{{cartItem.product.name}}</p>
+       </div>
+       <div class="itemAmount">
+         <p>Kom: {{ cartItem.quantity }}</p>
+       </div>
+       <div class="itemPrice">
+         <p>cena: {{ cartItem.quantity * cartItem.product.price}} din.</p>
+       </div>
+       <div class="salads">
+         {{cartItem.salads}}
+       </div>
+       <div class="toppings">
+         {{cartItem.toppings}}
+       </div>
+    </div>-->
     <div class="sum" fxLayout="row" fxLayoutAlign="end center">
       <p>Ukupno: {{sum}} din.</p>
     </div>
@@ -60,9 +86,9 @@
               <mat-error *ngIf="phoneNumber?.errors?.required">Morate uneti broj telefona</mat-error>
             </mat-form-field>
           </div>
-          <div>
-            <button class="primary" mat-flat-button type="submit" [disabled]="!form.valid">
-              Poruči
+          <div class="order-button">
+            <button class="primary order" mat-flat-button type="submit" [disabled]="!form.valid">
+              Poručite
             </button>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CartItem } from '../shared/product-cart-item.model';
+import { CartItem } from '../shared/all-models';
 import { BrowserStorageService } from '../services/browser-storage.service';
 
 @Injectable({

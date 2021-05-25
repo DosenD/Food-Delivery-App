@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { Product } from "../shared/product-cart-item.model";
+import { Product } from "../shared/all-models";
 
 interface ItemGroup {
  title :string,
@@ -10,8 +10,8 @@ interface ItemGroup {
 export class ProductGroupResolverService{} /*implements Resolve<ItemGroup> {
  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<ItemGroup> |
  Promise<ItemGroup> | ItemGroup {
-  
+
  }
 
- 
+
 }*/

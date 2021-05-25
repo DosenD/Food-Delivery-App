@@ -34,11 +34,11 @@ export class CartItem {
 
 
 export interface OrderItem  {
- item: CartItem;
- firstName: string;
- lastName: string;
+ items: CartItem[];
+ fullName: string;
  streetName: string;
  houseOrBuildNum: string;
  apartmentNum: number;
  phoneNum: number;
+ date: string;
 }

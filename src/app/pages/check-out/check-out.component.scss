@@ -2,16 +2,25 @@
   margin-top: 100px;
 
   .inner-checkOut {
-    .titleOrder {
+    .order-title {
       margin-bottom: 30px;
     }
-
-    .orderInfo {
-
-      padding: 10px;
-
-      p {
-        margin-bottom: 0px !important;
+    .order-items{
+      width: 100%;
+      text-align: start;
+      thead {
+        border-color: #cfcece !important;
+        border-bottom: 1px dashed #cfcece;
+      }
+      tr {
+        th, td {
+          padding: 5px;
+          text-align: start;
+          max-width: 60px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
 
@@ -33,11 +42,25 @@
 
         .input-container {
           .inputPair {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
             mat-form-field {
               padding-right: 15px;
+              max-width: 250px !important;
+              width: 100% !important;
               input {
                 border-radius: 3px;
               }
+            }
+          }
+          div.order-button {
+            button {
+              min-width: 100px !important;
+              width: 100%;
             }
           }
         }

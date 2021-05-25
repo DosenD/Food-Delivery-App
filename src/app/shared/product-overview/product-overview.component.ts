@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../product-cart-item.model';
+import { Product } from '../all-models';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductItemComponent } from '../product-item/product-item.component';

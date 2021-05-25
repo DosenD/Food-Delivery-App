@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
-import { CartItem } from '../shared/product-cart-item.model';
+import { CartItem } from '../shared/all-models';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { CartItem } from '../shared/product-cart-item.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  
+
   isOpen: boolean = false;
   private itmNumberSub!: Subscription;
   cartItems: CartItem[] = [];
@@ -44,12 +44,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  
+
   isActive(event: Event) {
     event.preventDefault();
     this.burgerActive = !this.burgerActive;
   }
-  
+
   toggleIsOpen() {
     this.isOpen = !this.isOpen;
   }

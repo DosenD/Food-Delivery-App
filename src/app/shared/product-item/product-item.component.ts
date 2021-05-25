@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
-import { CartItem, Product } from 'src/app/shared/product-cart-item.model';
+import { CartItem, Product } from 'src/app/shared/all-models';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import {

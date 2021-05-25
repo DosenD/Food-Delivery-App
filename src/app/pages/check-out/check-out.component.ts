@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { CartItem, OrderItem } from 'src/app/shared/product-cart-item.model';
+import { CartItem, OrderItem } from 'src/app/shared/all-models';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AngularFireDatabase } from '@angular/fire/database';
+import {formatDate} from '@angular/common';
 
 
 
@@ -13,11 +15,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CheckOutComponent implements OnInit, OnDestroy {
 
-  constructor(private cartService: CartService, private fb: FormBuilder) { }
+  constructor(
+    private cartService: CartService,
+    private fb: FormBuilder,
+    private db: AngularFireDatabase) { }
 
   private cartItemsSub!: Subscription;
   cartItem!: CartItem;
-  cartItems: CartItem[] = [];
+  cartItems!: CartItem[];
   form!: FormGroup;
   sum = 0;
 
@@ -46,9 +51,11 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   get firstName(){
    return this.form.get('firstName');
   }
-
   get lastName(){
     return this.form.get('lastName');
+  }
+  get fullName(){
+    return this.firstName?.value.concat(' ', this.lastName?.value);
   }
   get streetName(){
     return this.form.get('streetName');
@@ -65,16 +72,18 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
 
   addOrder(): void{
+  const now = formatDate(new Date(), 'HH:mm dd/MM/yyyy', 'en-US');
   const order: OrderItem = {
-    item: this.cartItem,
-    firstName: this.firstName?.value,
-    lastName: this.lastName?.value,
+    items: this.cartItems,
+    fullName: this.fullName,
     streetName: this.streetName?.value,
     houseOrBuildNum: this.houseOrBuildingNum?.value,
     apartmentNum: this.apartmentNum?.value,
     phoneNum: this.phoneNumber?.value,
+    date: now,
     } as OrderItem;
-  console.log(order);
+  console.log(typeof now);
+  this.db.list('orders').push(order);
   }
 
 }
