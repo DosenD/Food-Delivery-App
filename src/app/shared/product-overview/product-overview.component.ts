@@ -1,15 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../all-models';
 import { MatDialog } from '@angular/material/dialog';
-import { CartService } from 'src/app/services/cart.service';
 import { ProductItemComponent } from '../product-item/product-item.component';
 
 export interface DialogData {
- name: string,
- imagePath:string,
- description: string,
- price: number,
- type:string,
+ name: string;
+ imagePath: string;
+ description: string;
+ price: number;
+ type: string;
 }
 
 
@@ -19,15 +18,12 @@ export interface DialogData {
   templateUrl: './product-overview.component.html',
   styleUrls: ['./product-overview.component.scss']
 })
-export class ProductOverviewComponent implements OnInit {
+export class ProductOverviewComponent {
  @Input() listItem!: Product;
 
   constructor(
    public dialog: MatDialog
   ) { }
-
-  ngOnInit(): void {
-  }
 
 
   openDialog(): void {

@@ -57,6 +57,7 @@ export class ShopCartComponent implements OnInit, OnDestroy {
 
   clearItems(): void{
     this.cartService.resetItems();
+    this.browserStorageService.removeSession();
   }
 
   ngOnDestroy(): void {

@@ -4,11 +4,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { CartItem, Product } from 'src/app/shared/all-models';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-import {
- MatSnackBar,
- MatSnackBarHorizontalPosition,
- MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -57,7 +53,7 @@ export class ProductItemComponent implements OnInit {
     return this.form.get('salads');
   }
 
-  addToCart() {
+  addToCart(): void{
     const item = new CartItem(
      this.data,
      this.quantityControl?.value,

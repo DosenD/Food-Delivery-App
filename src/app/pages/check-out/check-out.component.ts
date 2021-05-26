@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem, OrderItem } from 'src/app/shared/all-models';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
-import {formatDate} from '@angular/common';
+import { formatDate } from '@angular/common';
 
 
 
@@ -17,14 +18,17 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   constructor(
     private cartService: CartService,
+    private browserStorageService: BrowserStorageService,
     private fb: FormBuilder,
-    private db: AngularFireDatabase) { }
+    private db: AngularFireDatabase,
+    ) { }
 
   private cartItemsSub!: Subscription;
   cartItem!: CartItem;
   cartItems!: CartItem[];
   form!: FormGroup;
   sum = 0;
+  nowArray: number[] = [];
 
   ngOnInit(): void {
    this.cartItemsSub = this.cartService.items.subscribe(result => {
@@ -72,7 +76,9 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
 
   addOrder(): void{
-  const now = formatDate(new Date(), 'HH:mm dd/MM/yyyy', 'en-US');
+  const now = new Date();
+  const workHours = +now.getHours();
+  const nowString = formatDate(new Date(), 'HH:mm:ss dd/MM/yyyy', 'en-us');
   const order: OrderItem = {
     items: this.cartItems,
     fullName: this.fullName,
@@ -80,10 +86,22 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     houseOrBuildNum: this.houseOrBuildingNum?.value,
     apartmentNum: this.apartmentNum?.value,
     phoneNum: this.phoneNumber?.value,
-    date: now,
+    createdAt: nowString,
     } as OrderItem;
-  console.log(typeof now);
-  this.db.list('orders').push(order);
+  if (workHours > 22 || workHours < 8 ){
+        alert(' ZATVORENO KONJU JEDAN!!!');
+        this.form.reset();
+        this.form.clearValidators();
+        this.cartService.resetItems();
+        this.browserStorageService.removeSession();
+     }
+  else if (workHours > 8 || workHours < 22){
+    this.db.list('orders').push(order);
+    this.form.clearValidators();
+    this.cartService.resetItems();
+    this.browserStorageService.removeSession();
+    alert('Dobicete potvrdu o prijemu porudzbine');
+   }
   }
 
 }

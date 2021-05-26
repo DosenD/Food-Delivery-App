@@ -60,6 +60,26 @@
         font-size: 20px !important;
       }
     }
+
+    .clearAll-priceSum {
+      .priceSum {
+        p {
+          font-size: 20px !important;
+        }
+      }
+      .clear-all {
+        button.clear-all-button.mat-raised-button {
+          padding: 0 10px !important;
+        }
+      }
+    }
+    .forw-back {
+      button.mat-raised-button.forw-button,
+      button.mat-raised-button.back-button {
+        padding: 0 10px !important;
+      }
+    }
+
   }
 }
 

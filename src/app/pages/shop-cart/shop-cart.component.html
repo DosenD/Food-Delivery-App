@@ -14,7 +14,7 @@
   </div>
   <div class="clearAll-priceSum" fxLayout="row" fxLayoutAlign="space-between center">
     <div class="clear-all">
-      <button class="clear-all" mat-raised-button class="primary" type="button" (click)="clearItems()">
+      <button mat-raised-button class="primary clear-all-button" type="button" (click)="clearItems()">
         obrišite sve
       </button>
     </div>
@@ -24,11 +24,11 @@
   </div>
   <div class="forw-back" fxLayout="row" fxLayoutAlign="space-between center">
    <div class="back">
-    <button mat-raised-button class="secondary" type="button" (click)="goBack()">nastavite kupovinu
+    <button mat-raised-button class="secondary forw-button" type="button" (click)="goBack()">nastavite kupovinu
     </button>
    </div>
    <div class="forward">
-    <button mat-raised-button class="secondary" type="button" (click)="goForward()">završite kupovinu
+    <button mat-raised-button class="secondary back-button" type="button" (click)="goForward()">završite kupovinu
     </button>
    </div>
   </div>

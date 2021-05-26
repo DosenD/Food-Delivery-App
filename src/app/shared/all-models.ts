@@ -40,5 +40,5 @@ export interface OrderItem  {
  houseOrBuildNum: string;
  apartmentNum: number;
  phoneNum: number;
- date: string;
+ createdAt: string;
 }
