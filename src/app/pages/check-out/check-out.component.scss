@@ -1,11 +1,13 @@
 .wrapper-checkOut {
-  margin-top: 100px;
+  
+  position: relative;
 
   .inner-checkOut {
+   margin-top: 50px;
     .order-title {
       margin-bottom: 30px;
     }
-    .order-items{
+    .order-items {
       width: 100%;
       text-align: start;
       thead {
@@ -13,7 +15,8 @@
         border-bottom: 1px dashed #cfcece;
       }
       tr {
-        th, td {
+        th,
+        td {
           padding: 5px;
           text-align: start;
           max-width: 60px;
@@ -37,7 +40,7 @@
       }
 
       form {
-        border: 1px dashed var(--nav-back);;
+        border: 1px dashed var(--nav-back);
         padding: 10px;
 
         .input-container {
@@ -67,7 +70,32 @@
       }
     }
   }
+  .single-message-container {
+   width: 100vw;
+   height: 100%;
+   background-color: #00000080;
+   position: absolute;
+   top: 0;
+   left: 0;
+   div {
+     position: absolute;
+     top: 150px;
+     left: 50%;
+     transform: translate(-50%, 0);
+     width: 280px;
+     height: 250px;
+     padding: 10px;
+     border-radius: 5px;
+     text-align: center;
+     background-color: #ffffff;
 
-
+     p {
+      font-size: 17px;
+      margin-bottom: 30px;
+     }
+   }
+ 
+ }
+ 
 }
 

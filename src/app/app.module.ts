@@ -42,7 +42,7 @@ import { ProductOverviewComponent } from './shared/product-overview/product-over
     MenuComponent,
     ProductGroupComponent,
     ErrorPageComponent,
-    ProductOverviewComponent
+    ProductOverviewComponent,
   ],
   imports: [
     BrowserModule,

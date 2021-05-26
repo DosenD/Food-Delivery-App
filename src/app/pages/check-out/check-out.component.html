@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-checkOut">
+<div class="wrapper wrapper-checkOut" (click)="closeMessage()">
   <div class="inner inner-checkOut">
    <!-- <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
       <h3>Vaša narudžbina</h3>
@@ -30,7 +30,7 @@
       <div class="titleInfo" fxLayout="row" fxLayoutAlign="center center">
         <h3>Vaši podaci</h3>
       </div>
-      <form (submit)="addOrder()" [formGroup]="form">
+      <form (submit)="addOrder()" [formGroup]="form" #myForm="ngForm">
         <div class="input-container" fxLayout="column" fxLayoutAlign="center center">
           <div class="inputPair">
             <mat-form-field class="firstName">
@@ -77,4 +77,25 @@
       </form>
     </div>
   </div>
+  <div class="single-message-container" *ngIf="cartEmpty">
+   <div fxLayout="column" fxLayoutAlign="center center">
+    <p>Vasa korpa je prazna, poručivanje nije moguce!</p>
+    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+   </div>
+  </div>
+  <div class="single-message-container" *ngIf="storeClosed">
+   <div fxLayout="column" fxLayoutAlign="center center">
+    <p>Radnja je zatvorena, poručivanje nije moguce!</p>
+    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+   </div>
+  </div>
+  <div class="single-message-container"  *ngIf="orderSent">
+   <div fxLayout="column" fxLayoutAlign="center center">
+    <p>Vaša porudžbina je uspešna,<br> dobićete poruku sa potvrdom na vaš mobilni uredjaj.</p>
+    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+   </div>
+  </div>
 </div>
+
+ 
+

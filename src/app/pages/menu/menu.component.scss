@@ -1,0 +1,37 @@
+.wrapper-products {
+  background-image: url(../../../assets/images/burger-back-dark-filter.png);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  .inner-products {
+    margin-top: 140px;
+    margin-bottom: 30px;
+    .title-products {
+      margin-bottom: 60px;
+
+      h1 {
+        color: var(--white);
+        margin-bottom: 10px;
+        text-align: center;
+        border-bottom: 2px dotted var(--nav-back);
+        background: rgba(8, 8, 8, 0.082);
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper-products {
+    .inner-products {
+      margin-top: 80px;
+      .title-products {
+        margin-bottom: 25px;
+        h1 {
+          font-size: 22px !important;
+        }
+      }
+    }
+  }
+}
