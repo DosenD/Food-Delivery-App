@@ -37,11 +37,13 @@
               <mat-label>Ime</mat-label>
               <input matInput type="text" formControlName="firstName">
               <mat-error *ngIf="firstName?.errors?.required">Morate uneti vaše ime</mat-error>
+              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
             </mat-form-field>
             <mat-form-field class="lastName">
               <mat-label>Prezime</mat-label>
               <input matInput type="text" formControlName="lastName">
               <mat-error *ngIf="lastName?.errors?.required">Morate uneti vaše prezime</mat-error>
+              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
             </mat-form-field>
           </div>
           <div class="inputPair">
@@ -49,11 +51,13 @@
               <mat-label>Ime ulice</mat-label>
               <input matInput type="text" formControlName="streetName">
               <mat-error *ngIf="streetName?.errors?.required">Morate uneti ulice</mat-error>
+              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-40 slova</mat-error>
             </mat-form-field>
             <mat-form-field class="houseOrBuildingNum">
               <mat-label>Broj kuće/zgrade</mat-label>
               <input matInput type="number" formControlName="houseOrBuildingNum">
               <mat-error *ngIf="houseOrBuildingNum?.errors?.required">Morate uneti broj zgrade/kuće</mat-error>
+              <mat-error *ngIf="houseOrBuildingNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
             </mat-form-field>
           </div>
           <div class="inputPair">
@@ -61,11 +65,13 @@
               <mat-label>Broj stana</mat-label>
               <input matInput type="number" formControlName="apartmentNum">
               <mat-error *ngIf="apartmentNum?.errors?.required">Morate uneti broj stana</mat-error>
+              <mat-error *ngIf="apartmentNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
             </mat-form-field>
             <mat-form-field class="phoneNumber">
               <mat-label>Broj telefona</mat-label>
               <input matInput type="number" formControlName="phoneNum">
               <mat-error *ngIf="phoneNumber?.errors?.required">Morate uneti broj telefona</mat-error>
+              <mat-error *ngIf="phoneNumber?.errors?.pattern">Broj mora biti pozitivan, od 6 do 14 cifara</mat-error>
             </mat-form-field>
           </div>
           <div class="order-button">
@@ -75,6 +81,8 @@
           </div>
         </div>
       </form>
+      <button class="some" mat-raised-button (click)="generateValue()">Generate User</button>
+      <input type="text" value="{{generatedValue}}">
     </div>
   </div>
   <div class="single-message-container" *ngIf="cartEmpty">

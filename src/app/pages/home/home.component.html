@@ -3,17 +3,23 @@
   <div class="hero" fxLayout="row" fxLayoutAlign="center center">
    <picture>
     <img class="heroImg" src="../../../assets/images/hero.png" alt="Food hunter hero image">
-    <source srcset="../../../assets/images/hero.webp" type="image/webp"  media="(max-width: 800px)">
-    <source srcset="../../../assets/images/hero.png" type="image/png">
    </picture>
   </div>
   <div class="order" fxLayout="row" fxLayoutAlign="center center">
     <a class="orderLink" (click)="loadMenu()">
-     <button class="orderButt primary" mat-raised-button>
-      Poručite
-     </button>
+      <button 
+       class="orderButt primary" 
+       mat-raised-button 
+       (click)="onSignUpIn(userEmail.value, userPass.value)">
+       Poručite
+      </button>
     </a>
+    <div>
+     <input type="text" value="{{emailAutoValue.trim()}}@some.net" #userEmail>
+     <input type="text" value="{{passAutoValue.trim()}}" #userPass>
+    </div>
   </div>
+  
  </div>
 </div>
 

@@ -36,6 +36,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   cartEmpty = false;
   storeClosed = false;
   orderSent = false;
+  generatedValue!:string;
 
   ngOnInit(): void {
     this.cartItemsSub = this.cartService.items.subscribe((result) => {
@@ -45,12 +46,12 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     });
 
     this.form = this.fb.group({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      streetName: new FormControl(null, Validators.required),
-      houseOrBuildingNum: new FormControl(null, Validators.required),
-      apartmentNum: new FormControl(null, Validators.required),
-      phoneNum: new FormControl(null, Validators.required),
+      firstName: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]{3,20}$/)]),
+      lastName: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]{3,20}$/)]),
+      streetName: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]{3,40}$/)]),
+      houseOrBuildingNum: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{1,4}$/)]),
+      apartmentNum: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{1,4}$/)]),
+      phoneNum: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{6,14}$/)]),
     });
   }
 
@@ -95,12 +96,12 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       createdAt: nowString,
     } as OrderItem;
 
-    if (workHours > 22 || workHours < 8) {
+    /*if (workHours > 22 || workHours < 8) {
       this.storeClosed = true;
       this.myForm.resetForm();
       this.cartService.resetItems();
       this.browserStorageService.removeSession();
-    } else if (!this.cartItems.length) {
+    } else*/ if (!this.cartItems.length) {
       this.cartEmpty = true;
       this.myForm.resetForm();
       this.cartService.resetItems();
@@ -117,5 +118,9 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.cartEmpty = false;
     this.storeClosed = false;
     this.orderSent = false;
+  }
+  generateValue(){
+   this.generatedValue = ' ' + Math.random().toString(36).substr(2, 9);
+   return this.generatedValue
   }
 }
