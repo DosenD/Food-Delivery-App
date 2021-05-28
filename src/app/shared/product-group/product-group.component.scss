@@ -1,9 +1,11 @@
 .inner-product-group {
-  mat-card.product-group.matCard-style {
-    padding: 10px 0 0 0 !important;
+  mat-card.product-group {
+    padding: 0 0 0 0 !important;
     max-width: 400px;
     height: auto;
-
+    .image-container {
+     overflow-y: hidden;
+    }
     mat-accordion {
       mat-expansion-panel {
         margin-top: -30px !important;
@@ -13,12 +15,7 @@
           height: 37px;
         }
       }
-    }
-
-
-
-
-
+     }
   }
 }
 

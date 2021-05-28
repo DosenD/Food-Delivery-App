@@ -14,7 +14,9 @@ export class AuthServiceService {
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
     .then(res=> {
      this.isLoggedIn = true;
+    // const userObject = res.user?.getIdToken()
      sessionStorage.setItem('user', JSON.stringify(res.user));
+    // console.log(userObject)
     })
    }
  
@@ -26,16 +28,8 @@ export class AuthServiceService {
     })
    }
 
-  signUpAndIn(){
-   this.signUp;
-   this.signIn;
-  }
-
-  
   logOut(): void{
    this.firebaseAuth.signOut();
    sessionStorage.removeItem('user');
   }
- 
-
 }

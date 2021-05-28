@@ -1,9 +1,8 @@
 .wrapper-checkOut {
-  
   position: relative;
 
   .inner-checkOut {
-   margin-top: 50px;
+    margin-top: 50px;
     .order-title {
       margin-bottom: 30px;
     }
@@ -71,32 +70,5 @@
       }
     }
   }
-  .single-message-container {
-   width: 100vw;
-   height: 100%;
-   background-color: #00000080;
-   position: absolute;
-   top: 0;
-   left: 0;
-   div {
-     position: absolute;
-     top: 150px;
-     left: 50%;
-     transform: translate(-50%, 0);
-     width: 280px;
-     height: 250px;
-     padding: 10px;
-     border-radius: 5px;
-     text-align: center;
-     background-color: #ffffff;
-
-     p {
-      font-size: 17px;
-      margin-bottom: 30px;
-     }
-   }
- 
- }
- 
+  
 }
-

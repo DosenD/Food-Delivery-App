@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-checkOut" (click)="closeMessage()">
   <div class="inner inner-checkOut">
-   <!-- <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
+   <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
       <h3>Vaša narudžbina</h3>
     </div>
     <table class="order-items">
@@ -8,8 +8,6 @@
       <tr>
         <th>Ime</th>
         <th>Kolicina</th>
-        <th>Salate</th>
-        <th>Namazi</th>
         <th>Cena</th>
       </tr>
       </thead>
@@ -17,15 +15,13 @@
       <tr *ngFor="let cartItem of cartItems">
         <td>{{cartItem.product.name}}</td>
         <td>{{cartItem.quantity}}</td>
-        <td>{{cartItem.salads}}</td>
-        <td>{{cartItem.toppings}}</td>
         <td>{{ cartItem.quantity * cartItem.product.price}} din.</td>
       </tr>
       </tbody>
     </table>
     <div class="sum" fxLayout="row" fxLayoutAlign="end center">
       <p>Ukupno: {{sum}} din.</p>
-    </div>-->
+    </div>
     <div class="userInfo">
       <div class="titleInfo" fxLayout="row" fxLayoutAlign="center center">
         <h3>Vaši podaci</h3>
@@ -81,8 +77,6 @@
           </div>
         </div>
       </form>
-      <button class="some" mat-raised-button (click)="generateValue()">Generate User</button>
-      <input type="text" value="{{generatedValue}}">
     </div>
   </div>
   <div class="single-message-container" *ngIf="cartEmpty">
@@ -91,12 +85,7 @@
     <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
    </div>
   </div>
-  <div class="single-message-container" *ngIf="storeClosed">
-   <div fxLayout="column" fxLayoutAlign="center center">
-    <p>Radnja je zatvorena, poručivanje nije moguce!</p>
-    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
-   </div>
-  </div>
+  
   <div class="single-message-container"  *ngIf="orderSent">
    <div fxLayout="column" fxLayoutAlign="center center">
     <p>Vaša porudžbina je uspešna,<br> dobićete poruku sa potvrdom na vaš mobilni uredjaj.</p>

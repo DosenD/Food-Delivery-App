@@ -52,9 +52,14 @@
         Dodaj u Korpu!
        </button>
       </div>
-      <!--<mat-error *ngIf="!form.valid">Izaberite namaze i salate</mat-error>-->
      </div>
     </div>
    </form>
   </mat-card-content>
+  <div class="single-message-container" *ngIf="storeClosed">
+   <div fxLayout="column" fxLayoutAlign="center center">
+    <p>Radnja je zatvorena, poručivanje nije moguce!</p>
+    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+   </div>
+  </div>
 </div>
