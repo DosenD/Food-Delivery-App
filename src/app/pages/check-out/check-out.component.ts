@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { formatDate } from '@angular/common';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-check-out',
@@ -30,12 +31,16 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   @ViewChild('myForm') myForm!: NgForm;
   cartItem!: CartItem;
   cartItems!: CartItem[];
+  orderItem!: OrderItem;
+  orderItems: OrderItem[] = [];
   form!: FormGroup;
   sum = 0;
   nowArray: number[] = [];
   cartEmpty = false;
   storeClosed = false;
   orderSent = false;
+  orderReceived = false;
+  checked = false;
 
   ngOnInit(): void {
     this.cartItemsSub = this.cartService.items.subscribe((result) => {
@@ -43,6 +48,41 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       this.cartItems.forEach((a) => (this.sum += a.product.price * a.quantity));
       return this.cartItems;
     });
+    this.db
+       .list('orders')
+       .valueChanges()
+       .pipe(
+         map((resData) => {
+          this.orderItems = [];
+           this.orderItems.push(...(resData as OrderItem[]));
+           return this.orderItems;
+         })
+       )
+       .subscribe(
+         (result: OrderItem[]) => {
+          const orderItem: OrderItem = this.browserStorageService.getSession('orderItem');
+          if(orderItem){
+           this.orderItems.map(item => {
+            if(orderItem.itemId === item.itemId && orderItem.checked !== item.checked){
+             console.log('Fuck Me Dead This Works!!!')
+             this.orderSent = false;
+             this.orderReceived = true;
+            }
+           })
+          } else {
+           console.log('No data in session storage')
+          }
+          
+         },
+         (error) => {
+           if (error) {
+             throw new Error(
+               'Error has occurred, no data has been retrieved!'
+             );
+           }
+         }
+       );
+     
 
     this.form = this.fb.group({
       firstName: new FormControl(null, [
@@ -55,14 +95,13 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       ]),
       streetName: new FormControl(null, [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z]{3,40}$/),
+        Validators.pattern(/^[a-zA-Z\s]{3,40}$/),
       ]),
       houseOrBuildingNum: new FormControl(null, [
         Validators.required,
         Validators.pattern(/^[0-9]{1,4}$/),
       ]),
       apartmentNum: new FormControl(null, [
-        Validators.required,
         Validators.pattern(/^[0-9]{1,4}$/),
       ]),
       phoneNum: new FormControl(null, [
@@ -99,17 +138,25 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     return this.form.get('phoneNum');
   }
 
+  get itemId() {
+    const itemId = Math.random().toString(36).substr(2, 9);
+    return itemId;
+  }
+
   addOrder(): void {
     const now = new Date();
     const workHours = +now.getHours();
     const order: OrderItem = {
       items: this.cartItems,
+      sum: this.sum,
       fullName: this.fullName,
       streetName: this.streetName?.value,
       houseOrBuildNum: this.houseOrBuildingNum?.value,
       apartmentNum: this.apartmentNum?.value,
       phoneNum: this.phoneNumber?.value,
-      createdAt: formatDate(now, 'HH:mm:ss dd/MM/yyyy', 'en-us'), //formatiramo date object i prebacujemo ga u string
+      createdAt: formatDate(now, 'dd/MM/yyyy HH:mm:ss ', 'en-us'), //formatiramo date object i prebacujemo ga u string
+      itemId: this.itemId,
+      checked: this.checked,
     } as OrderItem;
 
     if (!this.cartItems.length) {
@@ -121,7 +168,8 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       this.db.list('orders').push(order);
       this.myForm.resetForm();
       this.cartService.resetItems();
-      this.browserStorageService.removeSession();
+      this.browserStorageService.removeItem('cartItem');
+      this.browserStorageService.setOrderItem('orderItem', order);  
       this.orderSent = true;
     }
   }
@@ -129,5 +177,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.cartEmpty = false;
     this.storeClosed = false;
     this.orderSent = false;
+    this.orderReceived = false;
   }
 }

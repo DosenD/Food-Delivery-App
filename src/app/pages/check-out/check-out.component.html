@@ -1,98 +1,125 @@
 <div class="wrapper wrapper-checkOut" (click)="closeMessage()">
-  <div class="inner inner-checkOut">
-   <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
-      <h3>Vaša narudžbina</h3>
-    </div>
-    <table class="order-items">
-      <thead>
-      <tr>
-        <th>Ime</th>
-        <th>Kolicina</th>
-        <th>Cena</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let cartItem of cartItems">
-        <td>{{cartItem.product.name}}</td>
-        <td>{{cartItem.quantity}}</td>
-        <td>{{ cartItem.quantity * cartItem.product.price}} din.</td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="sum" fxLayout="row" fxLayoutAlign="end center">
-      <p>Ukupno: {{sum}} din.</p>
-    </div>
-    <div class="userInfo">
-      <div class="titleInfo" fxLayout="row" fxLayoutAlign="center center">
-        <h3>Vaši podaci</h3>
-      </div>
-      <form (submit)="addOrder()" [formGroup]="form" #myForm="ngForm">
-        <div class="input-container" fxLayout="column" fxLayoutAlign="center center">
-          <div class="inputPair">
-            <mat-form-field class="firstName">
-              <mat-label>Ime</mat-label>
-              <input matInput type="text" formControlName="firstName">
-              <mat-error *ngIf="firstName?.errors?.required">Morate uneti vaše ime</mat-error>
-              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
-            </mat-form-field>
-            <mat-form-field class="lastName">
-              <mat-label>Prezime</mat-label>
-              <input matInput type="text" formControlName="lastName">
-              <mat-error *ngIf="lastName?.errors?.required">Morate uneti vaše prezime</mat-error>
-              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="inputPair">
-            <mat-form-field class="streetName">
-              <mat-label>Ime ulice</mat-label>
-              <input matInput type="text" formControlName="streetName">
-              <mat-error *ngIf="streetName?.errors?.required">Morate uneti ulice</mat-error>
-              <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-40 slova</mat-error>
-            </mat-form-field>
-            <mat-form-field class="houseOrBuildingNum">
-              <mat-label>Broj kuće/zgrade</mat-label>
-              <input matInput type="number" formControlName="houseOrBuildingNum">
-              <mat-error *ngIf="houseOrBuildingNum?.errors?.required">Morate uneti broj zgrade/kuće</mat-error>
-              <mat-error *ngIf="houseOrBuildingNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="inputPair">
-            <mat-form-field class="apartmentNum">
-              <mat-label>Broj stana</mat-label>
-              <input matInput type="number" formControlName="apartmentNum">
-              <mat-error *ngIf="apartmentNum?.errors?.required">Morate uneti broj stana</mat-error>
-              <mat-error *ngIf="apartmentNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
-            </mat-form-field>
-            <mat-form-field class="phoneNumber">
-              <mat-label>Broj telefona</mat-label>
-              <input matInput type="number" formControlName="phoneNum">
-              <mat-error *ngIf="phoneNumber?.errors?.required">Morate uneti broj telefona</mat-error>
-              <mat-error *ngIf="phoneNumber?.errors?.pattern">Broj mora biti pozitivan, od 6 do 14 cifara</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="order-button">
-            <button class="primary order" mat-flat-button type="submit" [disabled]="!form.valid">
-              Poručite
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+ <div class="inner inner-checkOut">
+  <div class="order-title" fxLayout="row" fxLayoutAlign="center center">
+   <h2>Vaša porudžbina</h2>
   </div>
-  <div class="single-message-container" *ngIf="cartEmpty">
-   <div fxLayout="column" fxLayoutAlign="center center">
-    <p>Vasa korpa je prazna, poručivanje nije moguce!</p>
-    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+  <div class="order-items-container" fxLayout="column" fxLayoutAlign="center center">
+   <div class="order-items-inner">
+    <div class="order-items-labels" fxLayout="row" fxLayoutAlign="space-between center">
+     <h4>Ime</h4>
+     <h4 class="second">Kolicina</h4>
+     <h4 class="third">Cena</h4>
+    </div>
+    <div class="order-items-data" *ngFor="let cartItem of cartItems" fxLayout="row"
+     fxLayoutAlign="space-between center">
+     <p>{{cartItem.product.name}}</p>
+     <p class="second">{{cartItem.quantity}}</p>
+     <p class="third">{{ cartItem.quantity * cartItem.product.price}} din.</p>
+    </div>
    </div>
   </div>
-  
-  <div class="single-message-container"  *ngIf="orderSent">
-   <div fxLayout="column" fxLayoutAlign="center center">
-    <p>Vaša porudžbina je uspešna,<br> dobićete poruku sa potvrdom na vaš mobilni uredjaj.</p>
-    <button mat-raised-button class="secondary" (click)="closeMessage()">Zatvori</button>
+  <div class="sum" fxLayout="row" fxLayoutAlign="center center">
+   <div class="sum-inner" fxLayout="row" fxLayoutAlign="end center">
+    <p>Ukupno: {{sum}} din.</p>
    </div>
   </div>
+  <div class="userInfo">
+   <div class="titleInfo" fxLayout="row" fxLayoutAlign="center center">
+    <h2>Vaši podaci</h2>
+   </div>
+   <form (submit)="addOrder()" [formGroup]="form" #myForm="ngForm">
+    <div class="input-container" fxLayout="column" fxLayoutAlign="center center">
+     <div class="inputPair">
+      <mat-form-field class="firstName" appearance="fill">
+       <mat-label>Ime</mat-label>
+       <input matInput type="text" formControlName="firstName">
+       <mat-error *ngIf="firstName?.errors?.required">Morate uneti vaše ime</mat-error>
+       <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
+      </mat-form-field>
+      <mat-form-field class="lastName" appearance="fill">
+       <mat-label>Prezime</mat-label>
+       <input matInput type="text" formControlName="lastName">
+       <mat-error *ngIf="lastName?.errors?.required">Morate uneti vaše prezime</mat-error>
+       <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-20 slova</mat-error>
+      </mat-form-field>
+     </div>
+     <div class="inputPair">
+      <mat-form-field class="streetName" appearance="fill">
+       <mat-label>Ime ulice</mat-label>
+       <input matInput type="text" formControlName="streetName">
+       <mat-error *ngIf="streetName?.errors?.required">Morate uneti ulice</mat-error>
+       <mat-error *ngIf="firstName?.errors?.pattern">Unesite slova, duzina: 3-40 slova</mat-error>
+      </mat-form-field>
+      <mat-form-field class="houseOrBuildingNum" appearance="fill">
+       <mat-label>Broj kuće/zgrade</mat-label>
+       <input matInput type="number" formControlName="houseOrBuildingNum">
+       <mat-error *ngIf="houseOrBuildingNum?.errors?.required">Morate uneti broj zgrade/kuće</mat-error>
+       <mat-error *ngIf="houseOrBuildingNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
+      </mat-form-field>
+     </div>
+     <div class="inputPair">
+      <mat-form-field class="apartmentNum" appearance="fill">
+       <mat-label>Broj stana</mat-label>
+       <input matInput type="number" formControlName="apartmentNum">
+       <mat-error *ngIf="apartmentNum?.errors?.pattern">Broj mora biti pozitivan, najviše 4 cifre</mat-error>
+      </mat-form-field>
+      <mat-form-field class="phoneNumber" appearance="fill">
+       <mat-label>Broj telefona</mat-label>
+       <input matInput type="number" formControlName="phoneNum">
+       <mat-error *ngIf="phoneNumber?.errors?.required">Morate uneti broj telefona</mat-error>
+       <mat-error *ngIf="phoneNumber?.errors?.pattern">Broj mora biti pozitivan, od 6 do 14 cifara</mat-error>
+      </mat-form-field>
+     </div>
+     <div class="order-button">
+      <button class="primary order" mat-raised-button type="submit" [disabled]="!form.valid">
+       Poručite
+      </button>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+ <div class="single-message-container order-not-possible" *ngIf="cartEmpty">
+  <div class="single-message" fxLayout="column" fxLayoutAlign="center center">
+   <a (click)="closeMessage()">
+    <mat-icon class="close-message">cancel</mat-icon>
+   </a>
+   <p>Vasa korpa je prazna</p>
+   <p> Poručivanje nije moguce!</p>
+  </div>
+ </div>
+ <div class="single-message-container order-sent-weit" *ngIf="orderSent">
+  <div class="single-message" fxLayout="column" fxLayoutAlign="center center" >
+   <p>Sačekajte potrvdu</p>
+   <p>Hvala na strpljenju</p>
+   <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+   </div>
+   <p class="notification">(Nemojte gasiti pretraživač ili prozor)</p>
+  </div>
+ </div>
+ <div class="single-message-container order-success" *ngIf="orderReceived">
+  <div class="single-message" fxLayout="column" fxLayoutAlign="center center">
+   <a (click)="closeMessage()">
+    <mat-icon class="close-message">cancel</mat-icon>
+   </a>
+   <p style="margin-bottom: 10px;">Vaša porudžbina je primljena</p>
+   <p style="margin-bottom: 40px;">Klopa Stiže!</p>
+   <div class="success-checkmark">
+    <div class="check-icon">
+     <span class="icon-line line-tip"></span>
+     <span class="icon-line line-long"></span>
+     <div class="icon-circle"></div>
+     <div class="icon-fix"></div>
+    </div>
+   </div>
+  </div>
+ </div>
 </div>
-
- 
-

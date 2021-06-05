@@ -66,8 +66,8 @@ export class ProductItemComponent implements OnInit {
       this.toppingsChoice?.value,
       this.saladChoice?.value
     );
-    
-    if (timeSum > 23 || openTillHours < 8) {
+    //(timeSum >= 23 || openTillHours < 8)
+    if (timeSum > 1000) {
       this.storeClosed = true;
       this.myForm.resetForm();
       setTimeout(() => {
@@ -81,7 +81,6 @@ export class ProductItemComponent implements OnInit {
       this.myForm.resetForm();
       this.dialogRef.close();
     }
-    console.log(timeSum);
   }
   closeMessage() {
     this.storeClosed = false;

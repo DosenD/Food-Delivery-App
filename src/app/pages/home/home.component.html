@@ -10,13 +10,14 @@
       <button 
        class="orderButt primary" 
        mat-raised-button 
-       (click)="onSignUpIn(userEmail.value, userPass.value)">
+      >
+       <!--(click)="onSignUpIn(userEmail.value, userPass.value)"-->
        Poručite
       </button>
     </a>
-    <div>
-     <input type="text" value="{{emailAutoValue.trim()}}@some.net" #userEmail>
-     <input type="text" value="{{passAutoValue.trim()}}" #userPass>
+    <div style="margin-left: 20px;">
+     <input type="text" value="{{userEmailAndPassAutoValue}}@some.net" #userEmail>
+     <input type="text" value="{{userEmailAndPassAutoValue}}" #userPass>
     </div>
   </div>
   

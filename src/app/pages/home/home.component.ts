@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
@@ -9,39 +8,30 @@ import { AuthServiceService } from '../../services/auth-service.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  emailAutoValue!: string;
-  passAutoValue!:string;
+  userEmailAndPassAutoValue!: string;
+ 
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private cartservice: CartService,
     private authService: AuthServiceService
   ) {}
  
 
-  loadMenu() {
+  loadMenu() :void{
     this.router.navigate(['/menu']);  
   }
 
-  ngOnInit() {
-   this.generateEmailValue();
-   this.generatePasswordValue();
-   console.log(this.emailAutoValue)
-   console.log(this.passAutoValue)
+  ngOnInit() :void{
+   this.generateEmailAndPassValue();
+   
   
   }
-  generateEmailValue(){
-   this.emailAutoValue = ' ' + Math.random().toString(36).substr(2, 9);
-   return this.emailAutoValue;
-  }
-  generatePasswordValue(){
-   this.passAutoValue = ' ' + Math.random().toString(36).substr(2, 9);
-   return this.passAutoValue;
-  }
 
+  generateEmailAndPassValue(){
+   this.userEmailAndPassAutoValue = Math.random().toString(36).substr(2, 9);
+   return this.userEmailAndPassAutoValue;
+  }
  
-
   onSignUpIn(email: string, password: string) {
     this.authService.signUp(email, password);
     setTimeout(() => {

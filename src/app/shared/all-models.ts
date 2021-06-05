@@ -34,11 +34,15 @@ export class CartItem {
 
 
 export interface OrderItem  {
+ key: string;
  items: CartItem[];
+ sum: number;
  fullName: string;
  streetName: string;
  houseOrBuildNum: string;
  apartmentNum: number;
  phoneNum: number;
  createdAt: string;
+ itemId: string;
+ checked: boolean;
 }
