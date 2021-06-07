@@ -2,6 +2,8 @@
   position: relative;
 
   .inner-checkOut {
+   -webkit-box-shadow: 5px 5px 10px 5px #c9c9c96c, -1px 1px 11px 2px #c9c9c96c; 
+   box-shadow: 5px 5px 10px 5px #c9c9c96c, -1px 1px 11px 2px #c9c9c96c;
     h2 {
       font-weight: 400 !important;
       border-bottom: 2px dotted var(--nav-back);
